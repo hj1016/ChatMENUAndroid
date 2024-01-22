@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".IngredientRecommendationActivity"
+    android:background="@color/white">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="지금 어떤 재료가 있나요?"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center"
+        android:textSize="25dp"
+        android:textColor="#88C8B1"
+        android:textStyle="bold"
+        >
+    </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="잘못 입력한 재료는 터치하면 사라져요"
+        android:layout_gravity="center"
+        android:textSize="13dp"
+        android:textColor="#AAAAAA"
+        >
+    </TextView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <android.widget.Button
+        android:id="@+id/button_ir_complete"
+        android:background="@drawable/button_complete"
+        android:backgroundTint="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        android:text="완료"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textColor="#7E7E7E"
+        android:layout_marginTop="350dp"
+        android:layout_gravity="center"
+
+    >
+    </android.widget.Button>
+
+
+
+</LinearLayout>

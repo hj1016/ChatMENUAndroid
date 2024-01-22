@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#ffffff" />
+    <corners android:radius="20dp" /> <!-- radius 값을 조절하여 둥근 정도를 설정 -->
+</shape>

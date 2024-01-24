@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <!-- 상단의 텍스트뷰 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/pretendardmedium"
+        android:text="오늘의 날씨는?"
+        android:textColor="#88C8B1"
+        android:textSize="24sp" />
+
+    <!-- 날씨 정보를 표시하는 두 번째 LinearLayout -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- 도시명 -->
+        <TextView
+            android:id="@+id/cityName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="110dp"
+            android:fontFamily="@font/pretendardmedium"
+            android:text="서울"
+            android:textColor="#88C8B1"
+            android:textSize="16sp" />
+
+        <!-- 온도 -->
+        <TextView
+            android:id="@+id/temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:fontFamily="@font/pretendardmedium"
+            android:text="0"
+            android:textColor="#88C8B1"
+            android:textSize="16sp" />
+
+        <!-- 습도 -->
+        <TextView
+            android:id="@+id/humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:fontFamily="@font/pretendardmedium"
+            android:text="50"
+            android:textColor="#88C8B1"
+            android:textSize="16sp" />
+
+        <!-- 날씨 설명 -->
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:layout_marginBottom="100dp"
+            android:fontFamily="@font/pretendardmedium"
+            android:text="clear sky"
+            android:textColor="#88C8B1"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <!-- 버튼을 포함한 세 번째 LinearLayout -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <android.widget.Button
+            android:id="@+id/button_weather_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="100dp"
+            android:background="@drawable/button_unselected"
+            android:fontFamily="@font/pretendardextrabold"
+            android:textColor="#7E7E7E"
+            android:textSize="16sp"
+            android:text="완료"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+
+</LinearLayout>

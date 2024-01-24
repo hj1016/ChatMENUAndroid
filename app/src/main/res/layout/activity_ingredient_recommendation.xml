@@ -10,9 +10,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="지금 어떤 재료가 있나요?"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="70dp"
         android:layout_gravity="center"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:textColor="#88C8B1"
         android:textStyle="bold"
         >
@@ -22,12 +22,32 @@
         android:layout_height="wrap_content"
         android:text="잘못 입력한 재료는 터치하면 사라져요"
         android:layout_gravity="center"
-        android:textSize="13dp"
+        android:textSize="13sp"
         android:textColor="#AAAAAA"
         >
     </TextView>
 
+    <ListView
+        android:id="@+id/listview_ir"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"/>
 
+    <android.widget.Button
+        android:id="@+id/button_ir_plus"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/button_selected"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:elevation="4dp"
+        android:text="+"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        >
+    </android.widget.Button>
     <android.widget.Button
         android:id="@+id/button_ir_complete"
         android:background="@drawable/button_complete"
@@ -39,7 +59,8 @@
         android:textStyle="bold"
         android:textSize="18dp"
         android:textColor="#7E7E7E"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="40dp"
         android:layout_gravity="center"
 
     >

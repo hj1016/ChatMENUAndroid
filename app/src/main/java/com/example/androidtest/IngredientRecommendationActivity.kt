@@ -37,6 +37,9 @@ class IngredientRecommendationActivity : AppCompatActivity() {
         adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, ingredientsList)
         listview_ir.adapter = adapter
 
+        // 리스트뷰 항목 터치시 해당 항목 삭제
+
+
         // 추가 버튼 터치시 동작
         try{
             button_ir_plus.setOnClickListener {
@@ -49,7 +52,7 @@ class IngredientRecommendationActivity : AppCompatActivity() {
 
 
     }
-    // 재료 이름을 입력하는 레이어 팝업
+    // 재료 이름을 입력하는 다이얼로그 팝업
     private fun enterIngredientNamePopup() {
 
         //레이어 팝업 UI 초기화

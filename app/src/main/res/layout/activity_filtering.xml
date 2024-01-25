@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".FilteringActivity">
+    <ScrollView
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/scroll_ft"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/pretendardmedium"
+            android:textSize="24sp"
+            android:textColor="#88C8B1"
+            android:text="상세한 정보를 입력해주세요" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardmedium"
+                android:textSize="14sp"
+                android:textColor="#7E7E7E"
+                android:layout_marginLeft="20dp"
+                android:text="선호하는 음식" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1">
+
+                <android.widget.Button
+                    android:id="@+id/button_ft_morning"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_selector"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/pretendardextrabold"
+                    android:textSize="12sp"
+                    android:textColor="@drawable/text_color_selector"
+                    android:text="아침"
+                    android:onClick="onButtonClick" />
+
+                <android.widget.Button
+                    android:id="@+id/button_ft_lunch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_selector"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/pretendardextrabold"
+                    android:textSize="12sp"
+                    android:textColor="@drawable/text_color_selector"
+                    android:text="점심"
+                    android:onClick="onButtonClick" />
+
+                <android.widget.Button
+                    android:id="@+id/button_ft_dinner"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_selector"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/pretendardextrabold"
+                    android:textSize="12sp"
+                    android:textColor="@drawable/text_color_selector"
+                    android:text="저녁"
+                    android:onClick="onButtonClick" />
+
+                <android.widget.Button
+                    android:id="@+id/button_ft_night"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_selector"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/pretendardextrabold"
+                    android:textSize="12sp"
+                    android:textColor="@drawable/text_color_selector"
+                    android:text="야식"
+                    android:onClick="onButtonClick" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardmedium"
+                android:textSize="14sp"
+                android:textColor="#7E7E7E"
+                android:layout_marginLeft="20dp"
+                android:text="선호하는 맛" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1">
+
+                <android.widget.Button
+                    android:id="@+id/button_ft_sweet"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_selector"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/pretendardextrabold"
+                    android:textSize="12sp"
+                    android:textColor="@drawable/text_color_selector"
+                    android:text="단맛"
+                    android:onClick="onButtonClick" />
+
+                <android.widget.Button
+                    android:id="@+id/button_ft_spicy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_selector"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/pretendardextrabold"
+                    android:textSize="12sp"
+                    android:textColor="@drawable/text_color_selector"
+                    android:text="매운맛"
+                    android:onClick="onButtonClick" />
+
+                <android.widget.Button
+                    android:id="@+id/button_ft_salty"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_selector"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/pretendardextrabold"
+                    android:textSize="12sp"
+                    android:textColor="@drawable/text_color_selector"
+                    android:text="짠맛"
+                    android:onClick="onButtonClick" />
+
+                <android.widget.Button
+                    android:id="@+id/button_ft_sour"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_selector"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/pretendardextrabold"
+                    android:textSize="12sp"
+                    android:textColor="@drawable/text_color_selector"
+                    android:text="신맛"
+                    android:onClick="onButtonClick" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardmedium"
+                android:textSize="14sp"
+                android:textColor="#7E7E7E"
+                android:layout_marginLeft="20dp"
+                android:text="식사 인원" />
+            <EditText
+                android:id="@+id/editText_ft_name"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:inputType="text"
+                android:textSize="12sp"
+                android:hint="인원수 직접입력"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardmedium"
+                android:textSize="14sp"
+                android:textColor="#7E7E7E"
+                android:layout_marginLeft="20dp"
+                android:text="알레르기 정보" />
+            <android.widget.Button
+                android:id="@+id/button_ft_plus"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/button_selected"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:elevation="4dp"
+                android:text="+"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                >
+            </android.widget.Button>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1">
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardmedium"
+                android:textSize="14sp"
+                android:textColor="#7E7E7E"
+                android:layout_marginLeft="20dp"
+                android:text="다이어트 여부" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1">
+
+                <android.widget.Button
+                    android:id="@+id/button_ft_diet"
+                    android:layout_marginRight="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_selector"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/pretendardextrabold"
+                    android:textSize="12sp"
+                    android:textColor="@drawable/text_color_selector"
+                    android:text="해당"
+                    android:onClick="onButtonClick" />
+
+                <android.widget.Button
+                    android:id="@+id/button_ft_nodiet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_selector"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/pretendardextrabold"
+                    android:textSize="12sp"
+                    android:textColor="@drawable/text_color_selector"
+                    android:text="해당없음"
+                    android:onClick="onButtonClick" />
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardmedium"
+                android:textSize="14sp"
+                android:textColor="#7E7E7E"
+                android:layout_marginLeft="20dp"
+                android:text="비건 여부" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1">
+
+                <android.widget.Button
+                    android:id="@+id/button_ft_flex"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_selector"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/pretendardextrabold"
+                    android:textSize="12sp"
+                    android:textColor="@drawable/text_color_selector"
+                    android:text="플렉시테리언"
+                    android:onClick="onButtonClick" />
+
+                <android.widget.Button
+                    android:id="@+id/button_ft_polo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_selector"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/pretendardextrabold"
+                    android:textSize="12sp"
+                    android:textColor="@drawable/text_color_selector"
+                    android:text="폴로베지테리언"
+                    android:onClick="onButtonClick" />
+
+                <android.widget.Button
+                    android:id="@+id/button_ft_pesco"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_selector"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/pretendardextrabold"
+                    android:textSize="12sp"
+                    android:textColor="@drawable/text_color_selector"
+                    android:text="페스코베지테리언"
+                    android:onClick="onButtonClick" />
+
+                <android.widget.Button
+                    android:id="@+id/button_ft_lactoobo"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_selector"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/pretendardextrabold"
+                    android:textSize="12sp"
+                    android:textColor="@drawable/text_color_selector"
+                    android:text="락토오보베지테리언"
+                    android:onClick="onButtonClick" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1">
+
+                <android.widget.Button
+                    android:id="@+id/button_ft_obo"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_selector"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/pretendardextrabold"
+                    android:textSize="12sp"
+                    android:textColor="@drawable/text_color_selector"
+                    android:text="오보베지테리언"
+                    android:onClick="onButtonClick" />
+
+                <android.widget.Button
+                    android:id="@+id/button_ft_lacto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_selector"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/pretendardextrabold"
+                    android:textSize="12sp"
+                    android:textColor="@drawable/text_color_selector"
+                    android:text="락토오보베지테리언"
+                    android:onClick="onButtonClick" />
+
+                <android.widget.Button
+                    android:id="@+id/button_ft_vigan"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_selector"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/pretendardextrabold"
+                    android:textSize="12sp"
+                    android:textColor="@drawable/text_color_selector"
+                    android:text="비건"
+                    android:onClick="onButtonClick" />
+
+                <android.widget.Button
+                    android:id="@+id/button_ft_fru"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_selector"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/pretendardextrabold"
+                    android:textSize="12sp"
+                    android:textColor="@drawable/text_color_selector"
+                    android:text="프루테리언"
+                    android:onClick="onButtonClick" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

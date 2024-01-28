@@ -1,49 +1,55 @@
 package com.example.androidtest
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import android.widget.Toast
+import com.example.androidtest.DBManage
+
+// MainActivity에 있던 코드는 MainOptionActivity로 옮겼습니다.
+// activity_main.xml도 activity_main_option으로 이동.
 
 class MainActivity : AppCompatActivity() {
-    //ui 요소 선언
-    lateinit var button_main_chat : Button
-    lateinit var button_main_ir : Button
-    lateinit var button_main_time : Button
-    lateinit var button_main_weather : Button
-    lateinit var button_main_feeling : Button
+    lateinit var db : DBManage
+    var users = ArrayList<User>()
+    private lateinit var binding : ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        //ui 요소 초기화
-        button_main_ir = findViewById(R.id.button_main_ir) //IngredientRecommendationActiviy로 이동하는 버튼
-        button_main_chat = findViewById(R.id.button_main_chat)
-        button_main_time = findViewById(R.id.button_main_time)
-        button_main_weather = findViewById(R.id.button_main_weather)
-        button_main_feeling = findViewById(R.id.button_main_feeling)
+        db = DBManage(this)
 
-        //화면 전환
-        button_main_ir.setOnClickListener {
-            val intent = Intent(this, IngredientRecommendationActivity::class.java)
-            startActivity(intent)
-        }
-        button_main_chat.setOnClickListener {
-            val intent = Intent(this, ChatRecommendationActivity::class.java)
-            startActivity(intent)
-        }
-        button_main_time.setOnClickListener {
-            val intent = Intent(this, TimeRecommendationActivity::class.java)
-            startActivity(intent)
-        }
-        button_main_weather.setOnClickListener {
-
-        }
-        button_main_feeling.setOnClickListener {
-
+        binding.registerButton.setOnClickListener {
+            createUser().let {
+                if (it != null) {
+                    db.addUser(it)
+                }
+            }
         }
 
+        binding.loginButton.setOnClickListener {
+            createUser().let {
+                if (it != null) {
+                    if (db.login(it)) {
+                        Toast.makeText(this, "로그인 성공!", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, LoginSuccessActivity::class.java)
+                        intent.putExtra("name", binding.nameEditText.text.toString())
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(this, "로그인 실패!", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(this, "정보를 모두 입력해 주세요", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+        fun createUser(): User? {
+            val id = binding.idEditText.text.toString()
+            val pw = binding.pwEditText.text.toString()
+            if(id == "" || pw == "")
+                return null
+        }
     }
-
 }

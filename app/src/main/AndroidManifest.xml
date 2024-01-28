@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- 위치 권한, 인터넷 권한 -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -17,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidTest"
         tools:targetApi="33">
+        <activity
+            android:name=".MainOptionActivity"
+            android:exported="false" />
         <activity
             android:name=".WeatherRecommendationActivity"
             android:exported="false" />

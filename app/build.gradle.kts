@@ -26,6 +26,14 @@ android {
             )
         }
     }
+
+    // databinding 혹은 viewbinding을 사용하기 위해 추가 (둘 중 가능한 것으로 하나 채택할 예정)
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -41,6 +49,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.4.0")
     implementation("com.google.android.material:material:1.5.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    // WeatherRecommendationActivity에서 아래 두 implementation 사용
     implementation("com.google.android.gms:play-services-location:21.1.0")
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
     testImplementation("junit:junit:4.13.2")

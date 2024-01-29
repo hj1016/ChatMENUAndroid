@@ -43,11 +43,11 @@ class WeatherRecommendationActivity : AppCompatActivity() {
             requestLocationUpdates()
         }
 
-        // 2. api 를 이용해서 날씨 정보를 가져온다.=> 도시이름, 날씨(온도, 습도, 눈, 비,....)
+        // 2. api 를 이용해서 날씨 정보를 가져온다.=> 도시 이름, 날씨(온도, 습도, 눈, 비,....)
         getWeatherData(apiUrl, latitude, longitude, apiKey)
 
-        // 3. 그래픽과 텍스트로 현재 날씨를 화면에 표시
-        // 4. 완료 버튼을 누르면 현재 날씨 정보를 포함해서 음식추천 화면으로 전환한다.
+        // 3. 그래픽과 텍스트로 현재 날씨를 화면에 표시 (그래픽은 나중에 여유 있으면 추가, 텍스트까지 완료)
+        // 4. 완료 버튼을 누르면 현재 날씨 정보를 포함해서 음식 추천 화면으로 전환한다.
     }
 
 

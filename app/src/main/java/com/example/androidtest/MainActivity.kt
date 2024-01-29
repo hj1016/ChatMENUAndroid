@@ -3,10 +3,9 @@ package com.example.androidtest
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import android.content.Intent
 import com.example.androidtest.DBManage
-
-// MainActivity에 있던 코드는 MainOptionActivity로 옮겼습니다.
-// activity_main.xml도 activity_main_option으로 이동.
+import com.example.androidtest.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var db : DBManage
@@ -34,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                     if (db.login(it)) {
                         Toast.makeText(this, "로그인 성공!", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, LoginSuccessActivity::class.java)
-                        intent.putExtra("name", binding.nameEditText.text.toString())
+                        intent.putExtra("ID", binding.idEditText.text.toString())
                         startActivity(intent)
                     } else {
                         Toast.makeText(this, "로그인 실패!", Toast.LENGTH_SHORT).show()
@@ -48,8 +47,13 @@ class MainActivity : AppCompatActivity() {
         fun createUser(): User? {
             val id = binding.idEditText.text.toString()
             val pw = binding.pwEditText.text.toString()
-            if(id == "" || pw == "")
-                return null
+
+            return if (id.isNotEmpty() && pw.isNotEmpty()) {
+                User(id, pw)  // 실제 User 객체를 반환하도록 수정
+            } else {
+                null
+            }
         }
     }
 }
+

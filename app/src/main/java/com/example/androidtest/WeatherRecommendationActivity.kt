@@ -1,6 +1,7 @@
 package com.example.androidtest
 
 import android.Manifest
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import androidx.core.app.ActivityCompat
 import android.content.pm.PackageManager
 import android.location.Location
 import android.util.Log
+import android.widget.ImageButton
 import android.widget.TextView
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -28,6 +30,7 @@ class WeatherRecommendationActivity : AppCompatActivity() {
     private val apiKey = "6a83eb4b37a279a7d643253d454ff40e"
     private val apiUrl = "https://api.openweathermap.org/data/2.5/weather"
 
+    lateinit var imageButton_myPage: ImageButton
     lateinit var cityNameView: TextView
     lateinit var tempView: TextView
     lateinit var humidityView: TextView
@@ -36,6 +39,8 @@ class WeatherRecommendationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weather_recommendation)
+
+        imageButton_myPage = findViewById(R.id.imageButton_myPage)
 
         // 1. GPS 정보를 가져온다. => 위도, 경도
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
@@ -48,6 +53,12 @@ class WeatherRecommendationActivity : AppCompatActivity() {
 
         // 3. 그래픽과 텍스트로 현재 날씨를 화면에 표시 (그래픽은 나중에 여유 있으면 추가, 텍스트까지 완료)
         // 4. 완료 버튼을 누르면 현재 날씨 정보를 포함해서 음식 추천 화면으로 전환한다.
+
+        // 마이 페이지 버튼 클릭 리스너
+        imageButton_myPage.setOnClickListener {
+            val intent = Intent(this, MyPageActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 

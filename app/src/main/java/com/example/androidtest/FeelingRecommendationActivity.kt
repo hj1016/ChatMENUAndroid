@@ -1,12 +1,17 @@
-package com.example.androidtest
+package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import com.example.androidtest.MyPageActivity
+import com.example.androidtest.R
 
 class FeelingRecommendationActivity : AppCompatActivity() {
+    lateinit var imageButton_myPage: ImageButton
     lateinit var button_feeling_happy: Button
     lateinit var button_feeling_sad: Button
     lateinit var button_feeling_angry: Button
@@ -21,6 +26,7 @@ class FeelingRecommendationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_feeling_recommendation)
 
         //변수연결
+        imageButton_myPage = findViewById(R.id.imageButton_myPage)
         button_feeling_happy = findViewById(R.id.button_feeling_happy)
         button_feeling_sad = findViewById(R.id.button_feeling_sad)
         button_feeling_angry = findViewById(R.id.button_feeling_angry)
@@ -39,6 +45,12 @@ class FeelingRecommendationActivity : AppCompatActivity() {
                 Log.v("testLog", "클릭하신 감정은 " + selectedButtonName + " 입니다")
             }
 
+        }
+
+        // 마이 페이지 버튼 클릭 리스너
+        imageButton_myPage.setOnClickListener {
+            val intent = Intent(this, MyPageActivity::class.java)
+            startActivity(intent)
         }
 
         fun onButtonClick(view: View) {

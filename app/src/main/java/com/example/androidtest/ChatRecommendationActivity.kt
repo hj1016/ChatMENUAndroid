@@ -1,6 +1,7 @@
 package com.example.androidtest
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ListView
 import android.widget.TextView
 
@@ -16,6 +18,7 @@ class ChatRecommendationActivity : AppCompatActivity() {
 
     lateinit var listView_chat_list: ListView
 
+    lateinit var imageButton_myPage: ImageButton // 마이 페이지 버튼
     lateinit var button_chat_send: Button // 전송 버튼
     lateinit var editText_chat_input: EditText // 채팅 입력 칸
 
@@ -29,6 +32,7 @@ class ChatRecommendationActivity : AppCompatActivity() {
         listView_chat_list = findViewById(R.id.listView_chat_list)
         button_chat_send = findViewById(R.id.button_chat_send)
         editText_chat_input = findViewById(R.id.editText_chat_input)
+        imageButton_myPage = findViewById(R.id.imageButton_myPage)
 
         listView_chat_list.adapter = chatListAdapter // 리스트 뷰와 어댑터를 연결
 
@@ -36,6 +40,12 @@ class ChatRecommendationActivity : AppCompatActivity() {
         button_chat_send.setOnClickListener {
             addBubbleRight()
             editText_chat_input.setText("") // 에디트 텍스트 초기화
+        }
+
+        // 마이 페이지 버튼 클릭 리스너
+        imageButton_myPage.setOnClickListener {
+            val intent = Intent(this, MyPageActivity::class.java)
+            startActivity(intent)
         }
     }
 

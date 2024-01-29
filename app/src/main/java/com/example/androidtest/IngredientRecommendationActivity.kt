@@ -1,11 +1,13 @@
 package com.example.androidtest
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.ListView
 import androidx.appcompat.app.AlertDialog
@@ -14,6 +16,7 @@ import java.util.zip.Inflater
 
 class IngredientRecommendationActivity : AppCompatActivity() {
     // UI 요소 선언
+    private lateinit var imageButton_myPage: ImageButton
     private lateinit var button_ir_plus : Button
     private lateinit var button_ir_complete : Button
     private lateinit var editText_ir_name : EditText
@@ -29,7 +32,7 @@ class IngredientRecommendationActivity : AppCompatActivity() {
         // UI 요소 초기화
         button_ir_plus = findViewById(R.id.button_ir_plus)
         button_ir_complete = findViewById(R.id.button_ir_complete)
-
+        imageButton_myPage = findViewById(R.id.imageButton_myPage)
 
         //리스트뷰와 어댑터 초기화
         listview_ir = findViewById<ListView>(R.id.listview_ir)
@@ -50,7 +53,11 @@ class IngredientRecommendationActivity : AppCompatActivity() {
             e.printStackTrace()
         }
 
-
+        // 마이 페이지 버튼 클릭 리스너
+        imageButton_myPage.setOnClickListener {
+            val intent = Intent(this, MyPageActivity::class.java)
+            startActivity(intent)
+        }
     }
     // 재료 이름을 입력하는 다이얼로그 팝업
     private fun enterIngredientNamePopup() {

@@ -40,6 +40,9 @@
         <activity
             android:name=".IngredientRecommendationActivity"
             android:exported="true" />
+        <activity
+            android:name=".FeelingRecommendationActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>

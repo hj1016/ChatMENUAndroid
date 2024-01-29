@@ -1,9 +1,10 @@
-package com.example.myapplication
+package com.example.androidtest
 
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 
 class FeelingRecommendationActivity : AppCompatActivity() {
     lateinit var button_feeling_happy: Button

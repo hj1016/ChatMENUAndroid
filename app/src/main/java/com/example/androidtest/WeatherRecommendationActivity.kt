@@ -2,15 +2,15 @@ package com.example.androidtest
 
 import android.Manifest
 import android.content.Intent
-import android.os.Build
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import android.content.pm.PackageManager
 import android.location.Location
+import android.os.Build
+import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import okhttp3.OkHttpClient

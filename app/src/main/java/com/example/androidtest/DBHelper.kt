@@ -7,7 +7,8 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
 
-class DBManage(
+
+class DBHelper(
     val context: Context?,
 ): SQLiteOpenHelper(context, Database_Name, null, Database_Version) {
     companion object{
@@ -19,6 +20,7 @@ class DBManage(
         const val UID = "UID"
         const val ColId = "ID"
         const val ColPw = "PW"
+        const val ColAllergy = "ALLERGY"
 
         // 알러지, 선호하는 음식 등 추가
     }
@@ -115,6 +117,7 @@ class DBManage(
         )
         return cursor.count > 0
     }
+
     // 유저 정보 업데이트 메소드
     fun updateUser(user: User): Int{
         val db = this.writableDatabase
@@ -123,12 +126,5 @@ class DBManage(
         values.put(ColPw, user.pw)
 
         return db.update(TableName, values, "$ColId = ?", arrayOf(user.id))
-    }
-    // 유저 삭제 메소드
-    fun deleteUser(user:User) {
-        val db = this.writableDatabase
-
-        db.delete(TableName, "$ColId = ?", arrayOf(user.id))
-        db.close()
     }
 }

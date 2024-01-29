@@ -16,6 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidTest"
         tools:targetApi="33">
+
         <activity
             android:name=".MainOptionActivity"
             android:exported="true">
@@ -46,6 +47,9 @@
             android:exported="true" />
         <activity
             android:name=".FeelingRecommendationActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".MyPageActivity"
             android:exported="true"/>
     </application>
 

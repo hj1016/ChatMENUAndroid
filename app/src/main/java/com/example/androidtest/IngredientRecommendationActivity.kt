@@ -74,7 +74,6 @@ class IngredientRecommendationActivity : AppCompatActivity() {
             addIngredient(ingredientName)
             dialog.dismiss() // 팝업 닫기
         }
-
         button_ir_cancel.setOnClickListener {
            dialog.dismiss() // 팝업 닫기
        }

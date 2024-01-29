@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="알러지 종류를 추가해 주세요"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:textSize="25sp"
+        android:textColor="#88C8B1"
+        android:textStyle="bold"
+        >
+    </TextView>
+
+    <EditText
+        android:id="@+id/editText_ft_name"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:inputType="text"
+        android:textSize="17sp"
+        android:hint="알러지 이름"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
+
+        <android.widget.Button
+            android:id="@+id/button_ft_confirm"
+            android:layout_width="65dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:text="확인"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_selected"/>
+
+        <android.widget.Button
+            android:id="@+id/button_ft_cancel"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:text="취소"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_selected"/>
+    </LinearLayout>
+</LinearLayout>
+

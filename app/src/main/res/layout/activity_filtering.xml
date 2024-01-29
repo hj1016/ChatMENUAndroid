@@ -25,6 +25,37 @@
             android:textColor="#88C8B1"
             android:text="상세한 정보를 입력해주세요" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/pretendardmedium"
+            android:textSize="14sp"
+            android:textColor="#7E7E7E"
+            android:layout_marginLeft="20dp"
+            android:text="알레르기 정보" />
+        <android.widget.Button
+            android:id="@+id/button_ft_plus"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/button_selected"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:elevation="4dp"
+            android:text="+"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            >
+        </android.widget.Button>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_filtering"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"/>
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -212,43 +243,6 @@
                 />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/pretendardmedium"
-                android:textSize="14sp"
-                android:textColor="#7E7E7E"
-                android:layout_marginLeft="20dp"
-                android:text="알레르기 정보" />
-            <android.widget.Button
-                android:id="@+id/button_ft_plus"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
-                android:background="@drawable/button_selected"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:elevation="4dp"
-                android:text="+"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:textColor="@color/white"
-                >
-            </android.widget.Button>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:layout_weight="1">
-
-            </LinearLayout>
-        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

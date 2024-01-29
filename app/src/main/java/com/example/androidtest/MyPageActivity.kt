@@ -16,7 +16,6 @@ class MyPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_page)
 
-        textView_myPage_id = findViewById(R.id.textView_myPage_id)
         button_myPage_filtering = findViewById(R.id.button_myPage_filtering)
         button_myPage_logout = findViewById(R.id.button_myPage_logout)
 

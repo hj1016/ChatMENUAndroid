@@ -1,22 +1,32 @@
 package com.example.androidtest
 
+import ChatGPTConnection
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
 import java.io.IOException
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 
 class WeatherRecommendationActivity : AppCompatActivity() {
@@ -29,8 +39,12 @@ class WeatherRecommendationActivity : AppCompatActivity() {
     // 2
     private val apiKey = "6a83eb4b37a279a7d643253d454ff40e"
     private val apiUrl = "https://api.openweathermap.org/data/2.5/weather"
+    private var basic_msg: String = "음식메뉴 추천해줘 그 대신 내가 주는 단어들을 참고해서 일상적으로 먹을 수 있는 메뉴들로 추천해줘. 만약 날씨 정보를 제공하면 날씨에 어울리는 음식을 추천해주고, 만약 음식 재료 단어를 제공하면 재료들로 만든 음식을 추천해주고,  만약 감정을 제공하면 그 감정과 연관된 음식을 추천해주고, 만약 시간대를 제공하면, 그 시간대에 먹기 좋은 음식을 추천해줘. 이제 단어를 제공할게!"
 
     lateinit var imageButton_myPage: ImageButton
+    lateinit var button_wr_complete: Button
+    lateinit var button_wr_confirm: Button
+    lateinit var result_wr: TextView
     lateinit var cityNameView: TextView
     lateinit var tempView: TextView
     lateinit var humidityView: TextView
@@ -41,6 +55,7 @@ class WeatherRecommendationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_weather_recommendation)
 
         imageButton_myPage = findViewById(R.id.imageButton_myPage)
+        button_wr_complete = findViewById(R.id.button_weather_complete)
 
         // 1. GPS 정보를 가져온다. => 위도, 경도
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
@@ -58,6 +73,12 @@ class WeatherRecommendationActivity : AppCompatActivity() {
         imageButton_myPage.setOnClickListener {
             val intent = Intent(this, MyPageActivity::class.java)
             startActivity(intent)
+        }
+        // 완료 버튼 클릭 리스너
+        button_wr_complete.setOnClickListener {
+            lifecycleScope.launch {
+                resultPopup()
+            }
         }
     }
 
@@ -162,5 +183,40 @@ class WeatherRecommendationActivity : AppCompatActivity() {
                 e.printStackTrace()
             }
         })
+    }
+    private suspend fun chatGPTRequest(msg: String): String {
+        return suspendCoroutine { continuation ->
+            lifecycleScope.launch {
+                val chatGPTConnection = ChatGPTConnection()
+                val result = chatGPTConnection.sendChatRequest(msg)
+                continuation.resume(result)
+            }
+        }
+    }
+    private suspend fun resultPopup() {
+        //다이얼로그 팝업 UI 초기화
+        val builder = AlertDialog.Builder(this)
+        val inflater = LayoutInflater.from(this)
+        val view = inflater.inflate(R.layout.popup_recommendation_result, null)
+
+        button_wr_confirm =view.findViewById<Button>(R.id.button_rr_confirm)
+        result_wr = view.findViewById<TextView>(R.id.textview_result)
+
+        val cityname = cityNameView.text.toString()
+        val temp = tempView.text.toString()
+        val humidity = humidityView.text.toString()
+
+        result_wr.text = chatGPTRequest(basic_msg + "\n $cityname $temp $humidity")
+
+        // 팝업 생성
+        builder.setView(view)
+        val dialog = builder.create()
+
+        button_wr_confirm.setOnClickListener {
+            dialog.dismiss() // 팝업 닫기
+        }
+        // 팝업 띄우기
+        dialog.show()
+
     }
 }

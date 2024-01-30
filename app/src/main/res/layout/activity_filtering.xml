@@ -78,7 +78,7 @@
                 android:layout_weight="1">
 
                 <android.widget.Button
-                    android:id="@+id/button_ft_morning"
+                    android:id="@+id/button_ft_korea"
                     android:layout_marginRight="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -88,11 +88,11 @@
                     android:fontFamily="@font/pretendardextrabold"
                     android:textSize="12sp"
                     android:textColor="@drawable/text_color_selector"
-                    android:text="아침"
+                    android:text="한식"
                     android:onClick="onButtonClick" />
 
                 <android.widget.Button
-                    android:id="@+id/button_ft_lunch"
+                    android:id="@+id/button_ft_japan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
@@ -102,11 +102,11 @@
                     android:fontFamily="@font/pretendardextrabold"
                     android:textSize="12sp"
                     android:textColor="@drawable/text_color_selector"
-                    android:text="점심"
+                    android:text="일식"
                     android:onClick="onButtonClick" />
 
                 <android.widget.Button
-                    android:id="@+id/button_ft_dinner"
+                    android:id="@+id/button_ft_china"
                     android:layout_marginRight="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -116,11 +116,11 @@
                     android:fontFamily="@font/pretendardextrabold"
                     android:textSize="12sp"
                     android:textColor="@drawable/text_color_selector"
-                    android:text="저녁"
+                    android:text="중식"
                     android:onClick="onButtonClick" />
 
                 <android.widget.Button
-                    android:id="@+id/button_ft_night"
+                    android:id="@+id/button_ft_western"
                     android:layout_marginRight="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -130,7 +130,7 @@
                     android:fontFamily="@font/pretendardextrabold"
                     android:textSize="12sp"
                     android:textColor="@drawable/text_color_selector"
-                    android:text="야식"
+                    android:text="양식"
                     android:onClick="onButtonClick" />
 
             </LinearLayout>

@@ -61,6 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -69,15 +70,15 @@
                 android:textColor="#7E7E7E"
                 android:layout_marginLeft="20dp"
                 android:text="선호하는 음식" />
-            <LinearLayout
+
+            <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:layout_weight="1">
+                android:layout_marginTop="20dp">
 
-                <android.widget.Button
+                <RadioButton
                     android:id="@+id/button_ft_korea"
                     android:layout_marginRight="5dp"
                     android:layout_width="wrap_content"
@@ -88,10 +89,9 @@
                     android:fontFamily="@font/pretendardextrabold"
                     android:textSize="12sp"
                     android:textColor="@drawable/text_color_selector"
-                    android:text="한식"
-                    android:onClick="onButtonClick" />
+                    android:text="한식" />
 
-                <android.widget.Button
+                <RadioButton
                     android:id="@+id/button_ft_japan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -102,10 +102,9 @@
                     android:fontFamily="@font/pretendardextrabold"
                     android:textSize="12sp"
                     android:textColor="@drawable/text_color_selector"
-                    android:text="일식"
-                    android:onClick="onButtonClick" />
+                    android:text="일식" />
 
-                <android.widget.Button
+                <RadioButton
                     android:id="@+id/button_ft_china"
                     android:layout_marginRight="5dp"
                     android:layout_width="wrap_content"
@@ -116,10 +115,9 @@
                     android:fontFamily="@font/pretendardextrabold"
                     android:textSize="12sp"
                     android:textColor="@drawable/text_color_selector"
-                    android:text="중식"
-                    android:onClick="onButtonClick" />
+                    android:text="중식" />
 
-                <android.widget.Button
+                <RadioButton
                     android:id="@+id/button_ft_western"
                     android:layout_marginRight="5dp"
                     android:layout_width="wrap_content"
@@ -130,17 +128,15 @@
                     android:fontFamily="@font/pretendardextrabold"
                     android:textSize="12sp"
                     android:textColor="@drawable/text_color_selector"
-                    android:text="양식"
-                    android:onClick="onButtonClick" />
+                    android:text="양식" />
 
-            </LinearLayout>
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -149,15 +145,15 @@
                 android:textColor="#7E7E7E"
                 android:layout_marginLeft="20dp"
                 android:text="선호하는 맛" />
-            <LinearLayout
+
+            <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:layout_weight="1">
+                android:layout_marginTop="20dp">
 
-                <android.widget.Button
+                <RadioButton
                     android:id="@+id/button_ft_sweet"
                     android:layout_marginRight="5dp"
                     android:layout_width="wrap_content"
@@ -168,10 +164,9 @@
                     android:fontFamily="@font/pretendardextrabold"
                     android:textSize="12sp"
                     android:textColor="@drawable/text_color_selector"
-                    android:text="단맛"
-                    android:onClick="onButtonClick" />
+                    android:text="단맛" />
 
-                <android.widget.Button
+                <RadioButton
                     android:id="@+id/button_ft_spicy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -182,10 +177,9 @@
                     android:fontFamily="@font/pretendardextrabold"
                     android:textSize="12sp"
                     android:textColor="@drawable/text_color_selector"
-                    android:text="매운맛"
-                    android:onClick="onButtonClick" />
+                    android:text="매운맛" />
 
-                <android.widget.Button
+                <RadioButton
                     android:id="@+id/button_ft_salty"
                     android:layout_marginRight="5dp"
                     android:layout_width="wrap_content"
@@ -196,10 +190,9 @@
                     android:fontFamily="@font/pretendardextrabold"
                     android:textSize="12sp"
                     android:textColor="@drawable/text_color_selector"
-                    android:text="짠맛"
-                    android:onClick="onButtonClick" />
+                    android:text="짠맛" />
 
-                <android.widget.Button
+                <RadioButton
                     android:id="@+id/button_ft_sour"
                     android:layout_marginRight="5dp"
                     android:layout_width="wrap_content"
@@ -210,10 +203,9 @@
                     android:fontFamily="@font/pretendardextrabold"
                     android:textSize="12sp"
                     android:textColor="@drawable/text_color_selector"
-                    android:text="신맛"
-                    android:onClick="onButtonClick" />
+                    android:text="신맛" />
 
-            </LinearLayout>
+            </RadioGroup>
         </LinearLayout>
 
         <LinearLayout

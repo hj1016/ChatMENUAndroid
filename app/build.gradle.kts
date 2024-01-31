@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("plugin.serialization") version "1.9.22"
 }
 
 android {
@@ -56,6 +57,9 @@ dependencies {
     // WeatherRecommendationActivity에서 아래 두 implementation 사용
     implementation("com.google.android.gms:play-services-location:21.1.0")
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
+
+    // DB Helper에서 사용
+    implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
 

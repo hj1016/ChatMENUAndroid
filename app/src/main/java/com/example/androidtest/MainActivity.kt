@@ -1,17 +1,10 @@
 package com.example.androidtest
 
-import ChatGPTConnection
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import com.example.androidtest.databinding.ActivityMainBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     lateinit var db : DBHelper
@@ -24,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         db = DBHelper(this)
+        // db.dropTable();
 
         binding.registerButton.setOnClickListener {
             createUser().let {
@@ -37,13 +31,8 @@ class MainActivity : AppCompatActivity() {
             createUser().let {
                 if (it != null) {
                     if (db.login(it)) {
-                        // 진짜 로그인 : 로컬 스토리지에 유저 ID의 값이 저장되면 로그인 상태로 간주
-                        val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-                        val editor = sharedPreferences.edit()
-                        editor.putString("userID", it.id)
-                        editor.apply()
 
-                        /**
+                        /*
                          * === 로그아웃
                          *  val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
                          *  val editor = sharedPreferences.edit()

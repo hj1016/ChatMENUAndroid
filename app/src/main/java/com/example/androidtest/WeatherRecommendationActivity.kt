@@ -14,6 +14,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -28,7 +29,7 @@ import java.io.IOException
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-
+// API에서 오늘의 날씨 정보를 불러와 날씨 기반으로 음식 추천하는 기능
 class WeatherRecommendationActivity : AppCompatActivity() {
 
     // 1
@@ -39,12 +40,11 @@ class WeatherRecommendationActivity : AppCompatActivity() {
     // 2
     private val apiKey = "6a83eb4b37a279a7d643253d454ff40e"
     private val apiUrl = "https://api.openweathermap.org/data/2.5/weather"
-    private var basic_msg: String = "음식메뉴 추천해줘 그 대신 내가 주는 단어들을 참고해서 일상적으로 먹을 수 있는 메뉴들로 추천해줘. 만약 날씨 정보를 제공하면 날씨에 어울리는 음식을 추천해주고, 만약 음식 재료 단어를 제공하면 재료들로 만든 음식을 추천해주고,  만약 감정을 제공하면 그 감정과 연관된 음식을 추천해주고, 만약 시간대를 제공하면, 그 시간대에 먹기 좋은 음식을 추천해줘. 이제 단어를 제공할게!"
-
-    lateinit var imageButton_myPage: ImageButton
+    private var request_msg: String = "날씨를 참고하여 계절과 온도에 맞는 음식메뉴 3개 추천해줘. 각 음식에 대한 설명이 한 줄 이하가 되도록 해줘."
     lateinit var button_wr_complete: Button
     lateinit var button_wr_confirm: Button
     lateinit var result_wr: TextView
+    lateinit var imageButton_myPage: ImageButton
     lateinit var cityNameView: TextView
     lateinit var tempView: TextView
     lateinit var humidityView: TextView
@@ -77,6 +77,7 @@ class WeatherRecommendationActivity : AppCompatActivity() {
         // 완료 버튼 클릭 리스너
         button_wr_complete.setOnClickListener {
             lifecycleScope.launch {
+                Toast.makeText(this@WeatherRecommendationActivity, "추천 결과 생성에 10-20초 정도 소요됩니다", Toast.LENGTH_SHORT).show()
                 resultPopup()
             }
         }
@@ -202,11 +203,11 @@ class WeatherRecommendationActivity : AppCompatActivity() {
         button_wr_confirm =view.findViewById<Button>(R.id.button_rr_confirm)
         result_wr = view.findViewById<TextView>(R.id.textview_result)
 
-        val cityname = cityNameView.text.toString()
         val temp = tempView.text.toString()
         val humidity = humidityView.text.toString()
+        val description = descriptionView.text.toString()
 
-        result_wr.text = chatGPTRequest(basic_msg + "\n $cityname $temp $humidity")
+        result_wr.text = chatGPTRequest(request_msg + " 오늘의 날씨 정보는 다음과 같아. 온도:$temp 습도:$humidity 기타정보:$description ")
 
         // 팝업 생성
         builder.setView(view)

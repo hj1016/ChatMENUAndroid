@@ -1,5 +1,6 @@
 package com.example.androidtest
 
+import ChatGPTConnection
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +14,14 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
+// 자유롭게 말을 입력하여 대화하며 음식을 추천받을 수 있는 기능
 class ChatRecommendationActivity : AppCompatActivity() {
 
     lateinit var listView_chat_list: ListView
@@ -39,6 +47,10 @@ class ChatRecommendationActivity : AppCompatActivity() {
         // 전송 버튼 클릭 리스너
         button_chat_send.setOnClickListener {
             addBubbleRight()
+            lifecycleScope.launch {
+                Toast.makeText(this@ChatRecommendationActivity, "대화 답변 생성에 10-20초 정도 소요됩니다", Toast.LENGTH_SHORT).show()
+                addBubbleLeft()
+            }
             editText_chat_input.setText("") // 에디트 텍스트 초기화
         }
 
@@ -47,6 +59,7 @@ class ChatRecommendationActivity : AppCompatActivity() {
             val intent = Intent(this, MyPageActivity::class.java)
             startActivity(intent)
         }
+
     }
 
     // 내 메시지 말풍선 텍스트 뷰 동적 생성
@@ -62,15 +75,24 @@ class ChatRecommendationActivity : AppCompatActivity() {
     }
 
     // ChatGPT의 메시지 말풍선 텍스트 뷰 동적 생성
-    fun addBubbleLeft() {
+    suspend fun addBubbleLeft() {
         // 텍스트 뷰에 들어갈 String 생성
-        // val text = ChatGPT의 메시지
+        val text = chatGPTRequest(editText_chat_input.text.toString())
 
         // 채팅 리스트에 추가
-        // chat_list.add(text)
+        chat_list.add(text)
 
         // 리스트가 변동됨을 Adapter에 알림
-        // chatListAdapter.notifyDataSetChanged()
+        chatListAdapter.notifyDataSetChanged()
+    }
+    private suspend fun chatGPTRequest(msg: String): String {
+        return suspendCoroutine { continuation ->
+            lifecycleScope.launch {
+                val chatGPTConnection = ChatGPTConnection()
+                val result = chatGPTConnection.sendChatRequest(msg)
+                continuation.resume(result)
+            }
+        }
     }
 }
 

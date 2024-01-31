@@ -1,5 +1,6 @@
 package com.example.androidtest
 
+import ChatGPTConnection
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,12 +11,22 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.ListView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import java.util.zip.Inflater
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
+// 냉장고 안에 있는 재료들로 만들어 먹을 수 있는 음식 추천 받는 기능
 class IngredientRecommendationActivity : AppCompatActivity() {
     // UI 요소 선언
+    private var request_msg: String = "냉장고 안에 있는 재료 목록을 알려줄테니까 이것들을 활용해서 만들 수 있는 요리 3가지 알려줘. 레시피는 각 3줄이하로 요약해서 알려줘"
+    private lateinit var button_ir_result_confirm : Button
+    private lateinit var result_ir: TextView
     private lateinit var imageButton_myPage: ImageButton
     private lateinit var button_ir_plus : Button
     private lateinit var button_ir_complete : Button
@@ -41,7 +52,12 @@ class IngredientRecommendationActivity : AppCompatActivity() {
         listview_ir.adapter = adapter
 
         // 리스트뷰 항목 터치시 해당 항목 삭제
-
+        listview_ir.setOnItemClickListener { _, _, position, _ ->
+            // 클릭된 항목 삭제
+            adapter.remove(adapter.getItem(position))
+            // 어댑터 갱신
+            adapter.notifyDataSetChanged()
+        }
 
         // 추가 버튼 터치시 동작
         try{
@@ -57,6 +73,13 @@ class IngredientRecommendationActivity : AppCompatActivity() {
         imageButton_myPage.setOnClickListener {
             val intent = Intent(this, MyPageActivity::class.java)
             startActivity(intent)
+        }
+        // 완료 버튼 클릭 리스너
+        button_ir_complete.setOnClickListener {
+            lifecycleScope.launch {
+                Toast.makeText(this@IngredientRecommendationActivity, "추천 결과 생성에 10-20초 정도 소요됩니다", Toast.LENGTH_SHORT).show()
+                resultPopup()
+            }
         }
     }
     // 재료 이름을 입력하는 다이얼로그 팝업
@@ -102,6 +125,39 @@ class IngredientRecommendationActivity : AppCompatActivity() {
         }catch (e: Exception) {
             e.printStackTrace()
         }
+
+    }
+    private suspend fun chatGPTRequest(msg: String): String {
+        return suspendCoroutine { continuation ->
+            lifecycleScope.launch {
+                val chatGPTConnection = ChatGPTConnection()
+                val result = chatGPTConnection.sendChatRequest(msg)
+                continuation.resume(result)
+            }
+        }
+    }
+    private suspend fun resultPopup() {
+        //다이얼로그 팝업 UI 초기화
+        val builder = AlertDialog.Builder(this)
+        val inflater = LayoutInflater.from(this)
+        val view = inflater.inflate(R.layout.popup_recommendation_result, null)
+
+        button_ir_result_confirm =view.findViewById<Button>(R.id.button_rr_confirm)
+        result_ir = view.findViewById<TextView>(R.id.textview_result)
+
+        // 리스트뷰 항목의 이름들을 문자열로 가져오기
+        val itemNames: String = (0 until adapter.count).map { adapter.getItem(it)!! }.joinToString()
+        result_ir.text = chatGPTRequest(request_msg + " 재료목록: $itemNames")
+
+        // 팝업 생성
+        builder.setView(view)
+        val dialog = builder.create()
+
+        button_ir_result_confirm.setOnClickListener {
+            dialog.dismiss() // 팝업 닫기
+        }
+        // 팝업 띄우기
+        dialog.show()
 
     }
 

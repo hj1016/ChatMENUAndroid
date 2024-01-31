@@ -2,16 +2,18 @@ package com.example.androidtest
 
 import android.content.Context
 import android.content.Intent
+import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class MyPageActivity : AppCompatActivity() {
 
-    lateinit var textView_myPage_id: TextView
+    lateinit var imageButton_myPage_back: ImageButton
     lateinit var button_myPage_filtering: Button
     lateinit var button_myPage_logout: Button
 
@@ -20,8 +22,13 @@ class MyPageActivity : AppCompatActivity() {
         Log.d("here", "hi")
         setContentView(R.layout.activity_my_page)
 
+        imageButton_myPage_back = findViewById(R.id.imageButton_myPage)
         button_myPage_filtering = findViewById(R.id.button_myPage_filtering)
         button_myPage_logout = findViewById(R.id.button_myPage_logout)
+
+        imageButton_myPage_back.setOnClickListener {
+            finish()
+        }
 
         // 상세 정보 입력 버튼
         button_myPage_filtering.setOnClickListener {

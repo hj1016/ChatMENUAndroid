@@ -83,32 +83,32 @@
                         android:layout_marginTop="10dp">
 
                         <RadioButton
-                            android:id="@+id/button_ft_morning"
+                            android:id="@+id/button_ft_korea"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="아침" />
+                            android:text="한식" />
 
                         <RadioButton
-                            android:id="@+id/button_ft_lunch"
+                            android:id="@+id/button_ft_japan"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="점심" />
+                            android:text="일식" />
 
                         <RadioButton
-                            android:id="@+id/button_ft_dinner"
+                            android:id="@+id/button_ft_western"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="저녁" />
+                            android:text="양식" />
 
                         <RadioButton
-                            android:id="@+id/button_ft_night"
+                            android:id="@+id/button_ft_china"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="야식" />
+                            android:text="중식" />
                     </RadioGroup>
 
                 </LinearLayout>

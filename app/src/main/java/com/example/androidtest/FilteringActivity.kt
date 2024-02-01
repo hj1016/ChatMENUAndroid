@@ -56,10 +56,10 @@ class FilteringActivity: AppCompatActivity() {
         // 선호하는 음식
         radioGroupPreFood.setOnCheckedChangeListener { _, checkedId ->
             val selectedFood = when (checkedId) {
-                R.id.button_ft_morning -> "아침"
-                R.id.button_ft_lunch -> "점심"
-                R.id.button_ft_dinner -> "저녁"
-                R.id.button_ft_night -> "야식"
+                R.id.button_ft_korea -> "한식"
+                R.id.button_ft_japan -> "일식"
+                R.id.button_ft_western -> "양식"
+                R.id.button_ft_china -> "중식"
                 else -> "" // 다른 라디오 버튼을 고려할 경우
             }
 
@@ -70,10 +70,10 @@ class FilteringActivity: AppCompatActivity() {
         // 액티비티가 시작될 때 DB에서 이전에 선택한 음식을 불러와서 라디오 버튼을 선택해 주는 코드
         val selectedFood = dbHelper.getPreFood()
         when (selectedFood) {
-            "아침" -> radioGroupPreFood.check(R.id.button_ft_morning)
-            "점심" -> radioGroupPreFood.check(R.id.button_ft_lunch)
-            "저녁" -> radioGroupPreFood.check(R.id.button_ft_dinner)
-            "야식" -> radioGroupPreFood.check(R.id.button_ft_night)
+            "한식" -> radioGroupPreFood.check(R.id.button_ft_korea)
+            "일식" -> radioGroupPreFood.check(R.id.button_ft_japan)
+            "양식" -> radioGroupPreFood.check(R.id.button_ft_western)
+            "중식" -> radioGroupPreFood.check(R.id.button_ft_china)
         }
 
         // 선호하는 맛

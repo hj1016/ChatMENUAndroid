@@ -18,16 +18,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="100dp"
                 android:layout_gravity="center"
                 android:fontFamily="@font/pretendardmedium"
                 android:textSize="24sp"
                 android:textColor="#88C8B1"
-                android:text="상세한 정보를 입력해주세요" />
+                android:text="상세한 정보를 입력해 주세요" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="70dp"
                 android:fontFamily="@font/pretendardmedium"
                 android:textSize="14sp"
                 android:textColor="#7E7E7E"
@@ -49,22 +49,28 @@
             </android.widget.Button>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView_filtering"
-                android:layout_width="match_parent"
+                android:background="@drawable/recyclerview_ft"
+                android:layout_gravity="center"
+                android:layout_width="360dp"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:padding="20dp"
+                android:elevation="3dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="50dp"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/pretendardmedium"
                     android:textSize="14sp"
-                    android:textColor="#7E7E7E"
+                    android:textColor="#AAAAAA"
                     android:layout_marginLeft="15dp"
                     android:text="선호하는 음식" />
 
@@ -77,37 +83,65 @@
 
                     <RadioGroup
                         android:id="@+id/radioGroupPreFood"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginTop="10dp">
+                        android:layout_marginTop="5dp">
 
                         <RadioButton
                             android:id="@+id/button_ft_korea"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="80dp"
+                            android:layout_height="35dp"
                             android:layout_gravity="center"
+                            android:layout_margin="6dp"
+                            android:elevation="2dp"
+                            android:gravity="center"
+                            android:background="@drawable/button_radio_selector"
+                            android:button="@null"
+                            android:fontFamily="@font/pretendardmedium"
+                            android:textColor="@drawable/text_color_radio_selector"
                             android:text="한식" />
 
                         <RadioButton
                             android:id="@+id/button_ft_japan"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="80dp"
+                            android:layout_height="35dp"
                             android:layout_gravity="center"
+                            android:layout_margin="6dp"
+                            android:elevation="2dp"
+                            android:gravity="center"
+                            android:background="@drawable/button_radio_selector"
+                            android:button="@null"
+                            android:fontFamily="@font/pretendardmedium"
+                            android:textColor="@drawable/text_color_radio_selector"
                             android:text="일식" />
 
                         <RadioButton
                             android:id="@+id/button_ft_western"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="80dp"
+                            android:layout_height="35dp"
                             android:layout_gravity="center"
+                            android:layout_margin="6dp"
+                            android:elevation="2dp"
+                            android:gravity="center"
+                            android:background="@drawable/button_radio_selector"
+                            android:button="@null"
+                            android:fontFamily="@font/pretendardmedium"
+                            android:textColor="@drawable/text_color_radio_selector"
                             android:text="양식" />
 
                         <RadioButton
                             android:id="@+id/button_ft_china"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="80dp"
+                            android:layout_height="35dp"
                             android:layout_gravity="center"
+                            android:layout_margin="6dp"
+                            android:elevation="2dp"
+                            android:gravity="center"
+                            android:background="@drawable/button_radio_selector"
+                            android:button="@null"
+                            android:fontFamily="@font/pretendardmedium"
+                            android:textColor="@drawable/text_color_radio_selector"
                             android:text="중식" />
                     </RadioGroup>
 
@@ -117,7 +151,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="50dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -125,44 +159,72 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/pretendardmedium"
                     android:textSize="14sp"
-                    android:textColor="#7E7E7E"
-                    android:layout_marginLeft="20dp"
+                    android:textColor="#AAAAAA"
+                    android:layout_marginLeft="15dp"
                     android:text="선호하는 맛" />
 
                 <RadioGroup
                     android:id="@+id/radioGroupFlavour"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginLeft="15dp"
+                    android:layout_gravity="center"
                     android:layout_marginTop="10dp">
 
                     <RadioButton
                         android:id="@+id/button_ft_sweet"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="80dp"
+                        android:layout_height="35dp"
                         android:layout_gravity="center"
+                        android:layout_margin="6dp"
+                        android:elevation="2dp"
+                        android:gravity="center"
+                        android:background="@drawable/button_radio_selector"
+                        android:button="@null"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:textColor="@drawable/text_color_radio_selector"
                         android:text="단맛" />
 
                     <RadioButton
                         android:id="@+id/button_ft_spicy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="80dp"
+                        android:layout_height="35dp"
                         android:layout_gravity="center"
+                        android:layout_margin="6dp"
+                        android:elevation="2dp"
+                        android:gravity="center"
+                        android:background="@drawable/button_radio_selector"
+                        android:button="@null"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:textColor="@drawable/text_color_radio_selector"
                         android:text="매운맛" />
 
                     <RadioButton
                         android:id="@+id/button_ft_salty"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="80dp"
+                        android:layout_height="35dp"
                         android:layout_gravity="center"
+                        android:layout_margin="6dp"
+                        android:elevation="2dp"
+                        android:gravity="center"
+                        android:background="@drawable/button_radio_selector"
+                        android:button="@null"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:textColor="@drawable/text_color_radio_selector"
                         android:text="짠맛" />
 
                     <RadioButton
                         android:id="@+id/button_ft_sour"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="80dp"
+                        android:layout_height="35dp"
                         android:layout_gravity="center"
+                        android:layout_margin="6dp"
+                        android:elevation="2dp"
+                        android:gravity="center"
+                        android:background="@drawable/button_radio_selector"
+                        android:button="@null"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:textColor="@drawable/text_color_radio_selector"
                         android:text="신맛" />
                 </RadioGroup>
             </LinearLayout>
@@ -170,26 +232,30 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="50dp"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/pretendardmedium"
                     android:textSize="14sp"
-                    android:textColor="#7E7E7E"
-                    android:layout_marginLeft="20dp"
+                    android:textColor="#AAAAAA"
+                    android:layout_marginLeft="15dp"
                     android:text="식사 인원" />
                 <EditText
                     android:id="@+id/editText_ft_peoplenum"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/button_unselected"
+                    android:layout_margin="3dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
+                    android:elevation="2dp"
                     android:inputType="text"
-                    android:textSize="12sp"
-                    android:hint="인원수 직접 입력"
-                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    android:hint="직접 입력"
+                    android:fontFamily="@font/pretendardmedium"
+                    android:textColorHint="#AAAAAA"
+                    android:textColor="#7E7E7E"
                     android:gravity="center"
                     />
             </LinearLayout>
@@ -197,7 +263,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="50dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -205,30 +271,44 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/pretendardmedium"
                     android:textSize="14sp"
-                    android:textColor="#7E7E7E"
-                    android:layout_marginLeft="20dp"
+                    android:textColor="#AAAAAA"
+                    android:layout_marginLeft="15dp"
                     android:text="다이어트 여부" />
 
                 <RadioGroup
                     android:id="@+id/radioGroupDiet"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
                     android:orientation="horizontal"
-                    android:layout_marginTop="20dp">
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp">
 
                     <RadioButton
                         android:id="@+id/button_ft_diet"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="100dp"
+                        android:layout_height="35dp"
                         android:layout_gravity="center"
+                        android:layout_margin="6dp"
+                        android:elevation="2dp"
+                        android:gravity="center"
+                        android:background="@drawable/button_radio_selector"
+                        android:button="@null"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:textColor="@drawable/text_color_radio_selector"
                         android:text="해당" />
 
                     <RadioButton
                         android:id="@+id/button_ft_nodiet"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="100dp"
+                        android:layout_height="35dp"
                         android:layout_gravity="center"
+                        android:layout_margin="6dp"
+                        android:elevation="2dp"
+                        android:gravity="center"
+                        android:background="@drawable/button_radio_selector"
+                        android:button="@null"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:textColor="@drawable/text_color_radio_selector"
                         android:text="해당 없음" />
                 </RadioGroup>
             </LinearLayout>
@@ -236,7 +316,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="50dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -244,70 +324,142 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/pretendardmedium"
                     android:textSize="14sp"
-                    android:textColor="#7E7E7E"
-                    android:layout_marginLeft="20dp"
+                    android:textColor="#AAAAAA"
+                    android:layout_marginLeft="15dp"
                     android:text="비건 여부" />
 
                 <RadioGroup
                     android:id="@+id/radioGroupVegan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
                     android:orientation="vertical">
 
                     <RadioButton
                         android:id="@+id/button_ft_flex"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="200dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="8dp"
+                        android:elevation="2.1dp"
+                        android:gravity="center"
+                        android:background="@drawable/button_radio_selector"
+                        android:button="@null"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:textColor="@drawable/text_color_radio_selector"
                         android:text="플렉시테리언" />
 
                     <RadioButton
                         android:id="@+id/button_ft_polo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="폴로베지테리언" />
+                        android:layout_width="200dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="8dp"
+                        android:elevation="2.1dp"
+                        android:gravity="center"
+                        android:background="@drawable/button_radio_selector"
+                        android:button="@null"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:textColor="@drawable/text_color_radio_selector"
+                        android:text="폴로 베지테리언" />
 
                     <RadioButton
                         android:id="@+id/button_ft_pesco"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="페스코베지테리언" />
+                        android:layout_width="200dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="8dp"
+                        android:elevation="2.1dp"
+                        android:gravity="center"
+                        android:background="@drawable/button_radio_selector"
+                        android:button="@null"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:textColor="@drawable/text_color_radio_selector"
+                        android:text="페스코 베지테리언" />
 
                     <RadioButton
                         android:id="@+id/button_ft_lactoobo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="락토오브베지테리언" />
+                        android:layout_width="200dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="8dp"
+                        android:elevation="2.1dp"
+                        android:gravity="center"
+                        android:background="@drawable/button_radio_selector"
+                        android:button="@null"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:textColor="@drawable/text_color_radio_selector"
+                        android:text="락토 오보 베지테리언" />
 
                     <RadioButton
                         android:id="@+id/button_ft_obo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="오보베지테리언" />
+                        android:layout_width="200dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="8dp"
+                        android:elevation="2.1dp"
+                        android:gravity="center"
+                        android:background="@drawable/button_radio_selector"
+                        android:button="@null"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:textColor="@drawable/text_color_radio_selector"
+                        android:text="오보 베지테리언" />
 
                     <RadioButton
                         android:id="@+id/button_ft_lacto"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="락토베지테리언" />
+                        android:layout_width="200dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="8dp"
+                        android:elevation="2.1dp"
+                        android:gravity="center"
+                        android:background="@drawable/button_radio_selector"
+                        android:button="@null"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:textColor="@drawable/text_color_radio_selector"
+                        android:text="락토 베지테리언" />
 
                     <RadioButton
                         android:id="@+id/button_ft_vegan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="200dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="8dp"
+                        android:elevation="2.1dp"
+                        android:gravity="center"
+                        android:background="@drawable/button_radio_selector"
+                        android:button="@null"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:textColor="@drawable/text_color_radio_selector"
                         android:text="비건" />
 
                     <RadioButton
                         android:id="@+id/button_ft_fru"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="200dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="8dp"
+                        android:elevation="2.1dp"
+                        android:gravity="center"
+                        android:background="@drawable/button_radio_selector"
+                        android:button="@null"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:textColor="@drawable/text_color_radio_selector"
                         android:text="프루테리언" />
 
                     <RadioButton
                         android:id="@+id/button_ft_non"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="200dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="8dp"
+                        android:elevation="2.1dp"
+                        android:gravity="center"
+                        android:background="@drawable/button_radio_selector"
+                        android:button="@null"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:textColor="@drawable/text_color_radio_selector"
                         android:text="논비건" />
                 </RadioGroup>
 
@@ -320,11 +472,12 @@
 
                 <android.widget.Button
                     android:id="@+id/button_ft_complete"
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="70dp"
                     android:layout_marginBottom="100dp"
                     android:layout_gravity="center"
+                    android:elevation="2dp"
                     android:background="@drawable/button_unselected"
                     android:fontFamily="@font/pretendardextrabold"
                     android:textColor="#7E7E7E"

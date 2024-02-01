@@ -17,23 +17,23 @@
 
         <android.widget.Button
             android:id="@+id/button_main_filtering"
-            android:layout_marginBottom="50dp"
-            android:padding="16dp"
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/button_selector"
             android:elevation="4dp"
             android:fontFamily="@font/pretendardextrabold"
-            android:textSize="12sp"
+            android:onClick="onButtonClick"
+            android:padding="16dp"
+            android:text="상세 정보 설정"
             android:textColor="@drawable/text_color_selector"
-            android:text="상세정보 설정"
-            android:onClick="onButtonClick" />
+            android:textSize="12sp" />
 
         <android.widget.Button
             android:id="@+id/button_main_ir"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
             android:layout_gravity="center"
             android:background="@drawable/button_selected"
             android:padding="16dp"
@@ -46,7 +46,7 @@
 
         <android.widget.Button
             android:id="@+id/button_main_feeling"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="19dp"
             android:layout_gravity="center"
@@ -61,7 +61,7 @@
 
         <android.widget.Button
             android:id="@+id/button_main_weather"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="19dp"
             android:layout_gravity="center"
@@ -76,7 +76,7 @@
 
         <android.widget.Button
             android:id="@+id/button_main_time"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="19dp"
             android:layout_gravity="center"
@@ -91,7 +91,7 @@
 
         <android.widget.Button
             android:id="@+id/button_main_chat"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="19dp"
             android:layout_gravity="center"

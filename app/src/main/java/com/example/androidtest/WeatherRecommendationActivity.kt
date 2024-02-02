@@ -2,7 +2,6 @@ package com.example.androidtest
 
 import ChatGPTConnection
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
@@ -11,14 +10,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.launch
@@ -50,10 +50,15 @@ class WeatherRecommendationActivity : AppCompatActivity() {
     lateinit var tempView: TextView
     lateinit var humidityView: TextView
     lateinit var descriptionView: TextView
+    lateinit var iconView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weather_recommendation)
+
+        // ImageView 찾기
+        iconView = findViewById<ImageView>(R.id.icon_view)
+
 
         imageButton_weather_myPage = findViewById(R.id.imageButton_weather_myPage)
         imageButton_weather_back = findViewById(R.id.imageButton_weather_back)
@@ -156,14 +161,19 @@ class WeatherRecommendationActivity : AppCompatActivity() {
                     val jsonObject = JSONObject(responseData)
                     var main =  jsonObject.getJSONArray("weather").getJSONObject(0).getString("main")
                     var description =  jsonObject.getJSONArray("weather").getJSONObject(0).getString("description")
+                    var iconCode =  jsonObject.getJSONArray("weather").getJSONObject(0).getString("icon")
                     var temp = jsonObject.getJSONObject("main").getDouble("temp")
                     var humidity = jsonObject.getJSONObject("main").getInt("humidity")
                     val cityName = jsonObject.getString("name")
+                    var iconUrl = "https://openweathermap.org/img/wn/$iconCode.png"
+                    Log.d("iconUrl", iconUrl)
 
                     cityNameView = findViewById(R.id.cityName)
                     tempView = findViewById(R.id.temp)
                     humidityView = findViewById(R.id.humidity)
                     descriptionView = findViewById(R.id.description)
+                    iconView = findViewById(R.id.icon_view)
+
 
                     runOnUiThread {
                         var tempString = temp.toString()+"℃"
@@ -172,6 +182,9 @@ class WeatherRecommendationActivity : AppCompatActivity() {
                         tempView.text = tempString
                         humidityView.text = humidityString
                         descriptionView.text = description
+                        Glide.with(iconView.context)
+                            .load(iconUrl)
+                            .into(iconView)
                     }
 
                     Log.d("main", main)
@@ -214,9 +227,9 @@ class WeatherRecommendationActivity : AppCompatActivity() {
         val description = descriptionView.text.toString()
 
         val intent = intent //전달할 데이터를 받을 Intent
-        val user_info = intent.getStringExtra("user_info")
-        Log.d("filtering_test2",user_info!!)
-        result_wr.text = chatGPTRequest(request_msg + " 오늘의 날씨 정보는 다음과 같아. 온도:$temp 습도:$humidity 기타정보:$description "+user_info)
+        val userInfo = intent.getStringExtra("user_info")
+        Log.d("filtering_test2",userInfo.toString())
+        result_wr.text = chatGPTRequest(request_msg + " 오늘의 날씨 정보는 다음과 같아. 온도:$temp 습도:$humidity 기타정보:$description "+userInfo.toString())
 
         // 팝업 생성
         builder.setView(view)

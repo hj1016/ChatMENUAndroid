@@ -2,8 +2,6 @@ package com.example.androidtest
 
 import ChatGPTConnection
 import android.content.Intent
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +11,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 import kotlin.coroutines.resume
@@ -110,9 +109,9 @@ class TimeRecommendationActivity : AppCompatActivity() {
         result_time = view.findViewById<TextView>(R.id.textview_result)
 
         val intent = intent //전달할 데이터를 받을 Intent
-        val user_info = intent.getStringExtra("user_info")
-        Log.d("filtering_test2",user_info!!)
-        result_time.text = chatGPTRequest(request_msg + " [단어] $selectedButtonName" + user_info)
+        val userInfo = intent.getStringExtra("user_info")
+        Log.d("filtering_test2",userInfo.toString())
+        result_time.text = chatGPTRequest(request_msg + " [단어] $selectedButtonName" + userInfo.toString())
 
         // 팝업 생성
         builder.setView(view)

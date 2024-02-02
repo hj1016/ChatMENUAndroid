@@ -2,16 +2,13 @@ package com.example.androidtest
 
 import ChatGPTConnection
 import android.content.Intent
-import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.LinearLayout
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
@@ -19,7 +16,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
-import java.util.zip.Inflater
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
@@ -158,9 +154,9 @@ class IngredientRecommendationActivity : AppCompatActivity() {
         // 리스트뷰 항목의 이름들을 문자열로 가져오기
         val itemNames: String = (0 until adapter.count).map { adapter.getItem(it)!! }.joinToString()
         val intent = intent //전달할 데이터를 받을 Intent
-        val user_info = intent.getStringExtra("user_info")
-        Log.d("filtering_test2",user_info!!)
-        result_ir.text = chatGPTRequest(request_msg + " [재료목록] $itemNames "+user_info)
+        val userInfo = intent.getStringExtra("user_info")
+        Log.d("filtering_test2",userInfo.toString())
+        result_ir.text = chatGPTRequest(request_msg + " [재료목록] $itemNames "+userInfo.toString())
 
         // 팝업 생성
         builder.setView(view)

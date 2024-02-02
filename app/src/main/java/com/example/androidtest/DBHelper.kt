@@ -1,6 +1,5 @@
 package com.example.androidtest
 
-import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
@@ -16,7 +15,7 @@ class DBHelper(
 ): SQLiteOpenHelper(context, Database_Name, null, Database_Version) {
     companion object{
         const val Database_Name = "USER_AUTH"
-        const val Database_Version = 1
+        const val Database_Version = 3
 
         // TABLE
         const val TableName = "USER"
@@ -45,25 +44,6 @@ class DBHelper(
         db.execSQL(sql)
         onCreate(db)
     }
-    val allUsers : List<User>
-        @SuppressLint("Range")
-        get() {
-            val users = ArrayList<User>()
-            val selectQueryHandler = "SELECT * FROM $TableName"
-            val db = this.writableDatabase
-            val cursor = db.rawQuery(selectQueryHandler, null)
-            if(cursor.moveToFirst()){
-                do {
-                    val user = User()
-                    user.id = cursor.getString(cursor.getColumnIndex(ColId))
-                    user.pw = cursor.getString(cursor.getColumnIndex(ColPw))
-
-                    users.add(user)
-                }while (cursor.moveToNext())
-            }
-            db.close()
-            return users
-        }
     fun checkIdExist(id: String): Boolean{
         val db = this.readableDatabase
 
@@ -145,22 +125,6 @@ class DBHelper(
         return userID
     }
 
-    fun isLogin() : Boolean {
-        val sharedPreferences = context!!.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-        val userID = sharedPreferences.getString("userID", "")
-        return userID != ""
-    }
-
-    // 유저 정보 업데이트 메소드
-    fun updateUser(user: User): Int{
-        val db = this.writableDatabase
-        val values = ContentValues()
-        values.put(ColId, user.id)
-        values.put(ColPw, user.pw)
-
-        return db.update(TableName, values, "$ColId = ?", arrayOf(user.id))
-    }
-
     // 알러지 업데이트
     fun updateAllergy(allergies: Array<String>): Int {
         var userID = this.getUserID()
@@ -193,20 +157,26 @@ class DBHelper(
             null,
             null
         )
+
         var jsonData: String? = null
-        var result:Array<String>? = null
+        var result:Array<String> = emptyArray()
         if (cursor.moveToFirst()) {
             val columnIndex = cursor.getColumnIndex(ColAllergy)
             if (columnIndex != -1) {
+                Log.d("columnIndex", columnIndex.toString())
                 jsonData = cursor.getString(columnIndex)
-                result = Json.decodeFromString<Array<String>>(jsonData)
+
+                if (jsonData != null) {
+                    result = Json.decodeFromString<Array<String>>(jsonData)
+                }
+
             } else {
                 Log.e("TAG", "ColAllergy column does not exist.")
             }
         }
         Log.d("result", result!!.joinToString())
 
-        return result ?: emptyArray()
+        return result
     }
 
 
@@ -283,7 +253,7 @@ class DBHelper(
     }
 
     // 식사 인원 불러오기
-    fun getSomeIntValue(): Int {
+    fun getPeopleNum(): Int {
         val db = readableDatabase
         val userID = getUserID()
 
@@ -301,7 +271,7 @@ class DBHelper(
             null
         )
 
-        var result: Int? = null
+        var result: Int = 1
         if (cursor.moveToFirst()) {
             val columnIndex = cursor.getColumnIndex(ColPeopleNumber)
             if (columnIndex != -1) {
@@ -312,8 +282,7 @@ class DBHelper(
         }
 
         Log.d("result", result.toString())
-
-        return result ?: 0
+        return result
     }
 
 
@@ -375,12 +344,6 @@ class DBHelper(
         }
         Log.d("result", result ?: "Empty Result")
         return result ?: ""
-    }
-
-    // 테이블 아예 지우고 싶으면 가져가서 실행
-    fun dropTable() {
-        val db = this.writableDatabase
-        this.onUpgrade(db, 1, 2) // 예시로 버전을 1에서 2로 업그레이드
     }
 
 }

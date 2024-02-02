@@ -114,9 +114,9 @@ class FeelingRecommendationActivity : AppCompatActivity() {
         result_feeling = view.findViewById<TextView>(R.id.textview_result)
 
         val intent = intent //전달할 데이터를 받을 Intent
-        val user_info = intent.getStringExtra("user_info")
-        Log.d("filtering_test2",user_info!!)
-        result_feeling.text = chatGPTRequest(request_msg + " [단어] $selectedButtonName " + user_info )
+        val userInfo = intent.getStringExtra("user_info")
+        Log.d("filtering_test2",userInfo.toString())
+        result_feeling.text = chatGPTRequest(request_msg + " [단어] $selectedButtonName " + userInfo.toString() )
 
         // 팝업 생성
         builder.setView(view)

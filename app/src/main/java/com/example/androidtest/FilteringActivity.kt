@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-
 class FilteringActivity: AppCompatActivity() {
 
     private lateinit var button_ft_complete : Button
@@ -32,18 +31,19 @@ class FilteringActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_filtering)
 
+        // dbHelper 초기화
+        dbHelper = DBHelper(this)
+
         //UI 요소 초기화
         button_ft_plus = findViewById(R.id.button_ft_plus)
         button_ft_complete = findViewById(R.id.button_ft_complete)
 
         //리사이클러뷰와 어댑터 초기화
         recyclerView = findViewById<RecyclerView>(R.id.recyclerView_filtering)
-        buttonAdapter = ButtonAdapter(buttonNames)
+        buttonAdapter = ButtonAdapter(buttonNames, this)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = buttonAdapter
 
-        // dbHelper 초기화
-        dbHelper = DBHelper(this)
 
         val radioGroupPreFood = findViewById<RadioGroup>(R.id.radioGroupPreFood)
         val radioGroupFlavour = findViewById<RadioGroup>(R.id.radioGroupFlavour)
@@ -67,6 +67,7 @@ class FilteringActivity: AppCompatActivity() {
         }
 
         // 액티비티가 시작될 때 DB에서 이전에 선택한 음식을 불러와서 라디오 버튼을 선택해 주는 코드
+        Log.d("pass logic", "PreFood")
         val selectedFood = dbHelper.getPreFood()
         //사용자 정보에 선호 음식 취향 추가
         user_info+" 선호하는 음식 종류: "+selectedFood
@@ -92,6 +93,7 @@ class FilteringActivity: AppCompatActivity() {
         }
 
         // 액티비티가 시작될 때 DB에서 이전에 선택한 맛을 불러와서 라디오 버튼을 선택해 주는 코드
+        Log.d("pass logic", "Flavour")
         val selectedFlavour = dbHelper.getFlavour()
         //사용자 정보에 선호 맛 취향 추가
         user_info+" 선호하는 맛: "+selectedFlavour
@@ -104,10 +106,12 @@ class FilteringActivity: AppCompatActivity() {
 
 
         // 식사 인원
+        var getPeopleNumber: Int = dbHelper.getPeopleNum()
+        editTextPeople.setText(getPeopleNumber.toString())
         editTextPeople.setOnClickListener {
-            val peopleNumberValue = editTextPeople.text.toString().toIntOrNull() ?: 0
+            val peopleNumberValue = editTextPeople.text.toString().toIntOrNull() ?: 1
             //사용자 정보에 식사 인원 추가
-            user_info+" 식사 인원: "+peopleNumberValue
+            user_info+" 식사 인원: " + peopleNumberValue
 
             // 선택된 인원수 정보를 DB에 업데이트
             dbHelper.updatePeopleNum(peopleNumberValue)
@@ -128,6 +132,7 @@ class FilteringActivity: AppCompatActivity() {
         }
 
         // 액티비티가 시작될 때 DB에서 이전에 선택한 다이어트 여부를 불러와서 라디오 버튼을 선택해 주는 코드
+        Log.d("pass logic", "PreFood")
         val selectedDiet = dbHelper.getDiet()
         //사용자 정보에 다이어트 정보 추가
         user_info+" 다이어트 "+selectedDiet
@@ -157,6 +162,7 @@ class FilteringActivity: AppCompatActivity() {
         }
 
         // 액티비티가 시작될 때 DB에서 이전에 비건 정보를 불러와서 라디오 버튼을 선택해 주는 코드
+        Log.d("pass logic", "Vegan")
         val selectedVegan = dbHelper.getVegan()
         //사용자 정보에 비건 정보 추가
         user_info+" 비건 정보: "+selectedVegan
@@ -186,7 +192,7 @@ class FilteringActivity: AppCompatActivity() {
         } catch (e: Exception) {
             e.printStackTrace()
         }
-        dbHelper = DBHelper(this)
+        Log.d("pass logic", "allergy")
         // 알러지 정보 불러오기
         var rst:Array<String> = dbHelper.getAllergy()
         Log.d("rst", rst!!.joinToString())
@@ -244,8 +250,7 @@ class FilteringActivity: AppCompatActivity() {
         dialog.show()
     }
     private fun addNewButton(name: String) {
-        buttonNames.add(name)
-        buttonAdapter.notifyItemInserted(buttonNames.size - 1)
+        buttonAdapter.addItem(name)
     }
 
 

@@ -23,7 +23,7 @@ class DBHelper(
         const val UID = "UID"
         const val ColId = "ID"
         const val ColPw = "PW"
-        const val ColAllergy = "ALLERGY" // 배열
+        const val ColAllergy = "ALLERGY" // 배열, 텍스트
         const val ColPreFood = "PREFOOD" // 배열
         const val ColFlavour = "FLAVOUR" // 배열
         const val ColPeopleNumber = "PEOPLENUMBER" // Int
@@ -173,7 +173,6 @@ class DBHelper(
         return db.update(TableName, values, "$ColId = ?", arrayOf(userID))
     }
 
-    // 알러지 불러오기
     fun getAllergy():Array<String> {
         val db = this.readableDatabase
         var userID = this.getUserID()
@@ -383,4 +382,5 @@ class DBHelper(
         val db = this.writableDatabase
         this.onUpgrade(db, 1, 2) // 예시로 버전을 1에서 2로 업그레이드
     }
+
 }

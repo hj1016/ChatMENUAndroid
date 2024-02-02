@@ -32,17 +32,6 @@ class MainActivity : AppCompatActivity() {
                 if (it != null) {
                     if (db.login(it)) {
 
-                        /*
-                         * === 로그아웃
-                         *  val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-                         *  val editor = sharedPreferences.edit()
-                         *  editor.putString("userID", "")
-                         * === 로그인 여부 확인
-                         * val userID = sharedPreferences.getString("userID", "")
-                         * userID 가 비었다면 로그인 안 되어있음, 값이 있으면 로그인 상태
-                         */
-
-
                         Toast.makeText(this, "로그인 성공!", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, MainOptionActivity::class.java)
                         intent.putExtra("ID", binding.idEditText.text.toString())

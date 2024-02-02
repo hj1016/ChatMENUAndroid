@@ -1,6 +1,5 @@
 package com.example.androidtest
 
-import android.R.id.input
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
@@ -45,10 +44,6 @@ class FilteringActivity: AppCompatActivity() {
 
         // dbHelper 초기화
         dbHelper = DBHelper(this)
-//        dbHelper.updateAllergy(emptyArray())
-//        Log.d("UpdatedAllergies", dbHelper.updateAllergy().joinToString())
-//        val getAllergies = dbHelper.getAllergy()
-//        Log.d("Retrived Allergies", getAllergies.joinToString())
 
         val radioGroupPreFood = findViewById<RadioGroup>(R.id.radioGroupPreFood)
         val radioGroupFlavour = findViewById<RadioGroup>(R.id.radioGroupFlavour)
@@ -180,6 +175,7 @@ class FilteringActivity: AppCompatActivity() {
         user_info+" 알러지 목록: "+buttonNames.toString()
 
         // 리스트뷰 항목 터치시 해당 항목 삭제
+        // 테스트 중
 
         // 추가 버튼 터치시 동작
         try {
@@ -190,6 +186,11 @@ class FilteringActivity: AppCompatActivity() {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+        dbHelper = DBHelper(this)
+        // 알러지 정보 불러오기
+        var rst:Array<String> = dbHelper.getAllergy()
+        Log.d("rst", rst!!.joinToString())
+        buttonNames.addAll(rst)
 
         // 완료 버튼 클릭 시 이전(마이페이지) 화면으로
         button_ft_complete.setOnClickListener {

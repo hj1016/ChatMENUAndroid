@@ -3,6 +3,7 @@ package com.example.androidtest
 import ChatGPTConnection
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
@@ -108,6 +109,7 @@ class FeelingRecommendationActivity : AppCompatActivity() {
 
         val intent = intent //전달할 데이터를 받을 Intent
         val user_info = intent.getStringExtra("user_info")
+        Log.d("filtering_test2",user_info!!)
         result_feeling.text = chatGPTRequest(request_msg + " [단어] $selectedButtonName " + user_info )
 
         // 팝업 생성

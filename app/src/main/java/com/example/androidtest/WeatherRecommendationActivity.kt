@@ -209,6 +209,7 @@ class WeatherRecommendationActivity : AppCompatActivity() {
 
         val intent = intent //전달할 데이터를 받을 Intent
         val user_info = intent.getStringExtra("user_info")
+        Log.d("filtering_test2",user_info!!)
         result_wr.text = chatGPTRequest(request_msg + " 오늘의 날씨 정보는 다음과 같아. 온도:$temp 습도:$humidity 기타정보:$description "+user_info)
 
         // 팝업 생성

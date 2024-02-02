@@ -4,6 +4,7 @@ import android.R.id.input
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.EditText
@@ -192,6 +193,7 @@ class FilteringActivity: AppCompatActivity() {
 
         // 완료 버튼 클릭 시 이전(마이페이지) 화면으로
         button_ft_complete.setOnClickListener {
+            Log.d("filtering_test1",user_info)
             // FilteringActivity에서 FeelingRecommendationActivity로 사용자 정보 전달
             val intent1 = Intent(this@FilteringActivity, FeelingRecommendationActivity::class.java)
             intent1.putExtra("user_info", user_info)

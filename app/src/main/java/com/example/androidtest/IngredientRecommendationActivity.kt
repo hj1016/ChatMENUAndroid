@@ -24,7 +24,7 @@ import kotlin.coroutines.suspendCoroutine
 // 냉장고 안에 있는 재료들로 만들어 먹을 수 있는 음식 추천 받는 기능
 class IngredientRecommendationActivity : AppCompatActivity() {
     // UI 요소 선언
-    private var request_msg: String = "냉장고 안에 있는 재료 목록을 알려줄테니까 이것들을 활용해서 만들 수 있는 요리 3가지 알려줘. 레시피는 각 3줄이하로 요약해서 알려줘"
+    private var request_msg: String = "냉장고 안에 있는 재료 목록을 알려줄테니까 이것들을 활용해서 만들 수 있는 요리 3가지 알려줘. 레시피는 각 3줄이하로 요약해서 알려줘. 단, 주어진 사용자 정보를 고려하여 음식을 추천해줘."
     private lateinit var button_ir_result_confirm : Button
     private lateinit var result_ir: TextView
     private lateinit var imageButton_myPage: ImageButton
@@ -147,7 +147,9 @@ class IngredientRecommendationActivity : AppCompatActivity() {
 
         // 리스트뷰 항목의 이름들을 문자열로 가져오기
         val itemNames: String = (0 until adapter.count).map { adapter.getItem(it)!! }.joinToString()
-        result_ir.text = chatGPTRequest(request_msg + " 재료목록: $itemNames")
+        val intent = intent //전달할 데이터를 받을 Intent
+        val user_info = intent.getStringExtra("user_info")
+        result_ir.text = chatGPTRequest(request_msg + " [재료목록] $itemNames "+user_info)
 
         // 팝업 생성
         builder.setView(view)

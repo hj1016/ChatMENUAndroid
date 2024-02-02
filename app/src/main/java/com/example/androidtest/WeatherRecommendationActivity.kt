@@ -40,7 +40,7 @@ class WeatherRecommendationActivity : AppCompatActivity() {
     // 2
     private val apiKey = "6a83eb4b37a279a7d643253d454ff40e"
     private val apiUrl = "https://api.openweathermap.org/data/2.5/weather"
-    private var request_msg: String = "날씨를 참고하여 계절과 온도에 맞는 음식메뉴 3개 추천해줘. 각 음식에 대한 설명이 한 줄 이하가 되도록 해줘."
+    private var request_msg: String = "날씨를 참고하여 계절과 온도에 맞는 음식메뉴 3개 추천해줘. 각 음식에 대한 설명이 한 줄 이하가 되도록 해줘. 단, 주어진 사용자 정보를 고려하여 음식을 추천해줘."
     lateinit var button_wr_complete: Button
     lateinit var button_wr_confirm: Button
     lateinit var result_wr: TextView
@@ -207,7 +207,9 @@ class WeatherRecommendationActivity : AppCompatActivity() {
         val humidity = humidityView.text.toString()
         val description = descriptionView.text.toString()
 
-        result_wr.text = chatGPTRequest(request_msg + " 오늘의 날씨 정보는 다음과 같아. 온도:$temp 습도:$humidity 기타정보:$description ")
+        val intent = intent //전달할 데이터를 받을 Intent
+        val user_info = intent.getStringExtra("user_info")
+        result_wr.text = chatGPTRequest(request_msg + " 오늘의 날씨 정보는 다음과 같아. 온도:$temp 습도:$humidity 기타정보:$description "+user_info)
 
         // 팝업 생성
         builder.setView(view)

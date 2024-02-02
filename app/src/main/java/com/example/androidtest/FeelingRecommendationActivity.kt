@@ -3,7 +3,6 @@ package com.example.androidtest
 import ChatGPTConnection
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
@@ -20,7 +19,7 @@ import kotlin.coroutines.suspendCoroutine
 // 사용자의 기분에 공감하며, 기분에 어울리는 음식 추천하는 기능
 class FeelingRecommendationActivity : AppCompatActivity() {
 
-    private var request_msg: String = "주어진 단어에서 기분과 관련된 단어를 추출해서 그 기분과 어울리는 음식메뉴 3개 추천해줘. 각 음식에 대한 설명이 한 줄 이하가 되도록 해줘. 단, 그 감정에 공감하는 말을 먼저 해주고 그 다음에 추천해줘."
+    private var request_msg: String = "주어진 단어에서 기분과 관련된 단어를 추출해서 그 기분과 어울리는 음식메뉴 3개 추천해줘. 각 음식에 대한 설명이 한 줄 이하가 되도록 해줘. 단, 주어진 사용자 정보를 고려하여 음식을 추천해줘."
     lateinit var button_feeling_confirm: Button
     lateinit var result_feeling: TextView
     lateinit var imageButton_myPage: ImageButton
@@ -107,7 +106,9 @@ class FeelingRecommendationActivity : AppCompatActivity() {
         button_feeling_confirm =view.findViewById<Button>(R.id.button_rr_confirm)
         result_feeling = view.findViewById<TextView>(R.id.textview_result)
 
-        result_feeling.text = chatGPTRequest(request_msg + " 단어: $selectedButtonName")
+        val intent = intent //전달할 데이터를 받을 Intent
+        val user_info = intent.getStringExtra("user_info")
+        result_feeling.text = chatGPTRequest(request_msg + " [단어] $selectedButtonName " + user_info )
 
         // 팝업 생성
         builder.setView(view)

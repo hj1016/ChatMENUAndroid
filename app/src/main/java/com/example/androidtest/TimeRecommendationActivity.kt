@@ -21,7 +21,7 @@ import kotlin.coroutines.suspendCoroutine
 class TimeRecommendationActivity : AppCompatActivity() {
 
     // 변수 선언
-    private var request_msg: String = "주어진 단어를 보고 그 시간대와 어울리는 음식 메뉴 3개 추천해줘. 각 음식에 대한 설명이 한 줄 이하가 되도록 해줘. "
+    private var request_msg: String = "주어진 단어를 보고 그 시간대와 어울리는 음식 메뉴 3개 추천해줘. 각 음식에 대한 설명이 한 줄 이하가 되도록 해줘. 단, 주어진 사용자 정보를 고려하여 음식을 추천해줘."
     lateinit var button_time_confirm: Button
     lateinit var result_time: TextView
     lateinit var imageButton_myPage: ImageButton
@@ -103,7 +103,9 @@ class TimeRecommendationActivity : AppCompatActivity() {
         button_time_confirm =view.findViewById<Button>(R.id.button_rr_confirm)
         result_time = view.findViewById<TextView>(R.id.textview_result)
 
-        result_time.text = chatGPTRequest(request_msg + " 단어: $selectedButtonName")
+        val intent = intent //전달할 데이터를 받을 Intent
+        val user_info = intent.getStringExtra("user_info")
+        result_time.text = chatGPTRequest(request_msg + " [단어] $selectedButtonName" + user_info)
 
         // 팝업 생성
         builder.setView(view)

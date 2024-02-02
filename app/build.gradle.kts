@@ -60,7 +60,6 @@ dependencies {
 
     // DB Helper에서 사용
     implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
-
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
 
 

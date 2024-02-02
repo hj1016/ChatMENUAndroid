@@ -24,7 +24,8 @@ class TimeRecommendationActivity : AppCompatActivity() {
     private var request_msg: String = "주어진 단어를 보고 그 시간대와 어울리는 음식 메뉴 3개 추천해줘. 각 음식에 대한 설명이 한 줄 이하가 되도록 해줘. 단, 주어진 사용자 정보를 고려하여 음식을 추천해줘."
     lateinit var button_time_confirm: Button
     lateinit var result_time: TextView
-    lateinit var imageButton_myPage: ImageButton
+    lateinit var imageButton_time_myPage: ImageButton
+    lateinit var imageButton_time_back: ImageButton
     lateinit var button_time_morning: Button
     lateinit var button_time_lunch: Button
     lateinit var button_time_dinner: Button
@@ -38,7 +39,8 @@ class TimeRecommendationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_time_recommendation)
 
         // 변수 연결
-        imageButton_myPage = findViewById(R.id.imageButton_myPage)
+        imageButton_time_myPage = findViewById(R.id.imageButton_time_myPage)
+        imageButton_time_back = findViewById(R.id.imageButton_time_back)
         button_time_morning = findViewById(R.id.button_time_morning)
         button_time_lunch = findViewById(R.id.button_time_lunch)
         button_time_dinner = findViewById(R.id.button_time_dinner)
@@ -61,9 +63,13 @@ class TimeRecommendationActivity : AppCompatActivity() {
         }
 
         // 마이 페이지 버튼 클릭 리스너
-        imageButton_myPage.setOnClickListener {
+        imageButton_time_myPage.setOnClickListener {
             val intent = Intent(this, MyPageActivity::class.java)
             startActivity(intent)
+        }
+
+        imageButton_time_back.setOnClickListener {
+            finish()
         }
     }
 

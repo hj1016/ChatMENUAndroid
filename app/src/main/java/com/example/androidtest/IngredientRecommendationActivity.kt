@@ -2,6 +2,7 @@ package com.example.androidtest
 
 import ChatGPTConnection
 import android.content.Intent
+import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -28,7 +29,8 @@ class IngredientRecommendationActivity : AppCompatActivity() {
     private var request_msg: String = "냉장고 안에 있는 재료 목록을 알려줄테니까 이것들을 활용해서 만들 수 있는 요리 3가지 알려줘. 레시피는 각 3줄이하로 요약해서 알려줘. 단, 주어진 사용자 정보를 고려하여 음식을 추천해줘."
     private lateinit var button_ir_result_confirm : Button
     private lateinit var result_ir: TextView
-    private lateinit var imageButton_myPage: ImageButton
+    private lateinit var imageButton_ir_myPage: ImageButton
+    private lateinit var imageButton_ir_back: ImageButton
     private lateinit var button_ir_plus : Button
     private lateinit var button_ir_complete : Button
     private lateinit var editText_ir_name : EditText
@@ -44,7 +46,8 @@ class IngredientRecommendationActivity : AppCompatActivity() {
         // UI 요소 초기화
         button_ir_plus = findViewById(R.id.button_ir_plus)
         button_ir_complete = findViewById(R.id.button_ir_complete)
-        imageButton_myPage = findViewById(R.id.imageButton_myPage)
+        imageButton_ir_myPage = findViewById(R.id.imageButton_ir_myPage)
+        imageButton_ir_back = findViewById(R.id.imageButton_ir_back)
 
         //리스트뷰와 어댑터 초기화
         listview_ir = findViewById<ListView>(R.id.listview_ir)
@@ -71,10 +74,16 @@ class IngredientRecommendationActivity : AppCompatActivity() {
         }
 
         // 마이 페이지 버튼 클릭 리스너
-        imageButton_myPage.setOnClickListener {
+        imageButton_ir_myPage.setOnClickListener {
             val intent = Intent(this, MyPageActivity::class.java)
             startActivity(intent)
         }
+
+        // 뒤로 가기 버튼 클릭 리스너
+        imageButton_ir_back.setOnClickListener {
+            finish()
+        }
+
         // 완료 버튼 클릭 리스너
         button_ir_complete.setOnClickListener {
             lifecycleScope.launch {

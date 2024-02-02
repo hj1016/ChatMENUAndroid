@@ -7,13 +7,33 @@
     tools:context=".IngredientRecommendationActivity"
     android:background="@color/white">
 
-    <ImageButton
-        android:id="@+id/imageButton_myPage"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:background="@drawable/baseline_person_24"
-        android:layout_gravity="end"
-        android:layout_margin="15dp" />
+    <LinearLayout
+        android:id="@+id/linearLayout_ir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/imageButton_ir_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="start"
+            android:background="@drawable/baseline_arrow_back_24" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:id="@+id/imageButton_ir_myPage"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:background="@drawable/baseline_person_24" />
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,7 +41,7 @@
         android:text="지금 어떤 재료가 있나요?"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
-        android:textSize="25sp"
+        android:textSize="24sp"
         android:textColor="#88C8B1"
         android:textStyle="bold"
         >
@@ -31,7 +51,7 @@
         android:layout_height="wrap_content"
         android:text="잘못 입력한 재료는 터치하면 사라져요"
         android:layout_gravity="center"
-        android:textSize="13sp"
+        android:textSize="12sp"
         android:textColor="#AAAAAA"
         >
     </TextView>
@@ -41,16 +61,16 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp" />
 
     <android.widget.Button
         android:id="@+id/button_ir_plus"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:background="@drawable/button_selected"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:elevation="4dp"
+        android:elevation="2dp"
         android:text="+"
         android:textStyle="bold"
         android:textSize="20dp"
@@ -63,10 +83,10 @@
         android:backgroundTint="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="4dp"
+        android:elevation="2dp"
         android:text="완료"
-        android:textStyle="bold"
-        android:textSize="18dp"
+        android:textSize="14dp"
+        android:fontFamily="@font/pretendardextrabold"
         android:textColor="#7E7E7E"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="40dp"

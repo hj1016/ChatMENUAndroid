@@ -7,23 +7,43 @@
     android:orientation="vertical"
     tools:context=".FeelingRecommendationActivity">
 
-    <ImageButton
-        android:id="@+id/imageButton_myPage"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:background="@drawable/baseline_person_24"
-        android:layout_gravity="end"
-        android:layout_margin="15dp" />
+    <LinearLayout
+        android:id="@+id/linearLayout_feeling"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/imageButton_feeling_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="start"
+            android:background="@drawable/baseline_arrow_back_24" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:id="@+id/imageButton_feeling_myPage"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:background="@drawable/baseline_person_24" />
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:fontFamily="@font/pretendardmedium"
         android:textSize="24sp"
         android:textColor="#88C8B1"
-        android:text="당신의 감정을 알려주세요" />
+        android:text="당신의 감정을 알려 주세요" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,9 +58,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/button_selector"
-            android:elevation="4dp"
-            android:fontFamily="@font/pretendardextrabold"
-            android:textSize="12sp"
+            android:elevation="2dp"
+            android:fontFamily="@font/pretendardmedium"
+            android:textSize="14sp"
             android:textColor="@drawable/text_color_selector"
             android:text="행복"
             android:onClick="onButtonClick" />
@@ -52,9 +72,9 @@
             android:layout_marginTop="19dp"
             android:layout_gravity="center"
             android:background="@drawable/button_selector"
-            android:elevation="4dp"
-            android:fontFamily="@font/pretendardextrabold"
-            android:textSize="12sp"
+            android:elevation="2dp"
+            android:fontFamily="@font/pretendardmedium"
+            android:textSize="14sp"
             android:textColor="@drawable/text_color_selector"
             android:text="슬픔"
             android:onClick="onButtonClick" />
@@ -66,9 +86,9 @@
             android:layout_marginTop="19dp"
             android:layout_gravity="center"
             android:background="@drawable/button_selector"
-            android:elevation="4dp"
-            android:fontFamily="@font/pretendardextrabold"
-            android:textSize="12sp"
+            android:elevation="2dp"
+            android:fontFamily="@font/pretendardmedium"
+            android:textSize="14sp"
             android:textColor="@drawable/text_color_selector"
             android:text="화남"
             android:onClick="onButtonClick" />
@@ -80,9 +100,9 @@
             android:layout_marginTop="19dp"
             android:layout_gravity="center"
             android:background="@drawable/button_selector"
-            android:elevation="4dp"
-            android:fontFamily="@font/pretendardextrabold"
-            android:textSize="12sp"
+            android:elevation="2dp"
+            android:fontFamily="@font/pretendardmedium"
+            android:textSize="14sp"
             android:textColor="@drawable/text_color_selector"
             android:text="우울함"
             android:onClick="onButtonClick" />
@@ -94,12 +114,12 @@
             android:layout_gravity="center"
             android:layout_marginTop="19dp"
             android:background="@drawable/button_selector"
-            android:elevation="4dp"
-            android:fontFamily="@font/pretendardextrabold"
+            android:elevation="2dp"
+            android:fontFamily="@font/pretendardmedium"
+            android:textSize="14sp"
             android:onClick="onButtonClick"
             android:text="즐거움"
-            android:textColor="@drawable/text_color_selector"
-            android:textSize="12sp" />
+            android:textColor="@drawable/text_color_selector" />
 
     </LinearLayout>
 
@@ -114,10 +134,11 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="100dp"
             android:layout_gravity="center"
+            android:elevation="2dp"
             android:background="@drawable/button_unselected"
             android:fontFamily="@font/pretendardextrabold"
             android:textColor="#7E7E7E"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:text="완료"
             />
 

@@ -44,7 +44,8 @@ class WeatherRecommendationActivity : AppCompatActivity() {
     lateinit var button_wr_complete: Button
     lateinit var button_wr_confirm: Button
     lateinit var result_wr: TextView
-    lateinit var imageButton_myPage: ImageButton
+    lateinit var imageButton_weather_myPage: ImageButton
+    lateinit var imageButton_weather_back: ImageButton
     lateinit var cityNameView: TextView
     lateinit var tempView: TextView
     lateinit var humidityView: TextView
@@ -54,7 +55,8 @@ class WeatherRecommendationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weather_recommendation)
 
-        imageButton_myPage = findViewById(R.id.imageButton_myPage)
+        imageButton_weather_myPage = findViewById(R.id.imageButton_weather_myPage)
+        imageButton_weather_back = findViewById(R.id.imageButton_weather_back)
         button_wr_complete = findViewById(R.id.button_weather_complete)
 
         // 1. GPS 정보를 가져온다. => 위도, 경도
@@ -70,9 +72,13 @@ class WeatherRecommendationActivity : AppCompatActivity() {
         // 4. 완료 버튼을 누르면 현재 날씨 정보를 포함해서 음식 추천 화면으로 전환한다.
 
         // 마이 페이지 버튼 클릭 리스너
-        imageButton_myPage.setOnClickListener {
+        imageButton_weather_myPage.setOnClickListener {
             val intent = Intent(this, MyPageActivity::class.java)
             startActivity(intent)
+        }
+        // 뒤로 가기 버튼 클릭 리스너
+        imageButton_weather_back.setOnClickListener {
+            finish()
         }
         // 완료 버튼 클릭 리스너
         button_wr_complete.setOnClickListener {

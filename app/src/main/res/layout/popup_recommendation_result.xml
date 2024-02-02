@@ -17,11 +17,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="음식추천 결과"
+                android:text="추천 결과를 알려 드릴게요"
                 android:layout_gravity="center"
-                android:textSize="25sp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/pretendardmedium"
+                android:textSize="24sp"
                 android:textColor="#88C8B1"
-                android:textStyle="bold"
                 >
             </TextView>
 
@@ -32,9 +33,9 @@
                 android:text=""
                 android:layout_marginTop="30dp"
                 android:layout_gravity="center"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
+                android:fontFamily="@font/pretendardmedium"
+                android:textSize="14sp"
+                android:textColor="#7E7E7E"
                 >
             </TextView>
 
@@ -43,12 +44,14 @@
                 android:id="@+id/button_rr_confirm"
                 android:layout_width="65dp"
                 android:layout_marginTop="30dp"
-                android:layout_marginRight="20dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:elevation="2dp"
+                android:layout_marginBottom="20dp"
                 android:text="확인"
                 android:textSize="14sp"
-                android:textColor="@android:color/white"
+                android:textColor="#FFFFFF"
+                android:fontFamily="@font/pretendardextrabold"
                 android:background="@drawable/button_selected"/>
         </LinearLayout>
     </ScrollView>

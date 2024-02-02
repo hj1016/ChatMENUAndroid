@@ -481,7 +481,7 @@
                     android:background="@drawable/button_unselected"
                     android:fontFamily="@font/pretendardextrabold"
                     android:textColor="#7E7E7E"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:text="완료"
                     />
             </LinearLayout>

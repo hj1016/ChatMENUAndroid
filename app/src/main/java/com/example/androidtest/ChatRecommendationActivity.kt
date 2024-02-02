@@ -26,12 +26,14 @@ class ChatRecommendationActivity : AppCompatActivity() {
 
     lateinit var listView_chat_list: ListView
 
-    lateinit var imageButton_myPage: ImageButton // 마이 페이지 버튼
+    lateinit var imageButton_chat_myPage: ImageButton // 마이 페이지 버튼
+    lateinit var imageButton_chat_back: ImageButton // 뒤로가기 버튼
     lateinit var button_chat_send: Button // 전송 버튼
     lateinit var editText_chat_input: EditText // 채팅 입력 칸
 
     var chat_list = arrayListOf<String>() // 내 채팅 내역을 담을 ArrayList
     val chatListAdapter = ChatListAdapter(this, chat_list) // 어댑터 초기화
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +42,8 @@ class ChatRecommendationActivity : AppCompatActivity() {
         listView_chat_list = findViewById(R.id.listView_chat_list)
         button_chat_send = findViewById(R.id.button_chat_send)
         editText_chat_input = findViewById(R.id.editText_chat_input)
-        imageButton_myPage = findViewById(R.id.imageButton_myPage)
+        imageButton_chat_myPage = findViewById(R.id.imageButton_chat_myPage)
+        imageButton_chat_back = findViewById(R.id.imageButton_chat_back)
 
         listView_chat_list.adapter = chatListAdapter // 리스트 뷰와 어댑터를 연결
 
@@ -55,9 +58,14 @@ class ChatRecommendationActivity : AppCompatActivity() {
         }
 
         // 마이 페이지 버튼 클릭 리스너
-        imageButton_myPage.setOnClickListener {
+        imageButton_chat_myPage.setOnClickListener {
             val intent = Intent(this, MyPageActivity::class.java)
             startActivity(intent)
+        }
+
+        // 뒤로 가기 버튼 클릭 리스너
+        imageButton_chat_back.setOnClickListener {
+            finish()
         }
 
     }
@@ -113,12 +121,12 @@ class ChatListAdapter (val context: Context, val chat_list: ArrayList<String>): 
         // LayoutInflater: item을 Adapter에서 사용할 View로 inflate
         val view: View = LayoutInflater.from(context).inflate(R.layout.textview_chat_right, null)
 
-        // 위에서 생성된 view를 textView_chat_right.xml 파일의 view와 연결
-        val textView_chat_right = view.findViewById<TextView>(R.id.textView_chat_right)
+        // 위에서 생성된 view를 textView_chat_left.xml 파일의 view와 연결
+        val textView_chat_left = view.findViewById<TextView>(R.id.textView_chat_right)
 
         // chat_list의 변수의 데이터를 TextView에 저장
         val chat = chat_list[p0]
-        textView_chat_right.text = chat
+        textView_chat_left.text = chat
 
         return view
     }

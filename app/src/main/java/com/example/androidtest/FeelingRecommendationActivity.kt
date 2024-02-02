@@ -23,7 +23,8 @@ class FeelingRecommendationActivity : AppCompatActivity() {
     private var request_msg: String = "주어진 단어에서 기분과 관련된 단어를 추출해서 그 기분과 어울리는 음식메뉴 3개 추천해줘. 각 음식에 대한 설명이 한 줄 이하가 되도록 해줘. 단, 주어진 사용자 정보를 고려하여 음식을 추천해줘."
     lateinit var button_feeling_confirm: Button
     lateinit var result_feeling: TextView
-    lateinit var imageButton_myPage: ImageButton
+    lateinit var imageButton_feeling_myPage: ImageButton
+    lateinit var imageButton_feeling_back: ImageButton
     lateinit var button_feeling_happy: Button
     lateinit var button_feeling_sad: Button
     lateinit var button_feeling_angry: Button
@@ -38,7 +39,8 @@ class FeelingRecommendationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_feeling_recommendation)
 
         //변수연결
-        imageButton_myPage = findViewById(R.id.imageButton_myPage)
+        imageButton_feeling_myPage = findViewById(R.id.imageButton_feeling_myPage)
+        imageButton_feeling_back = findViewById(R.id.imageButton_feeling_back)
         button_feeling_happy = findViewById(R.id.button_feeling_happy)
         button_feeling_sad = findViewById(R.id.button_feeling_sad)
         button_feeling_angry = findViewById(R.id.button_feeling_angry)
@@ -63,9 +65,13 @@ class FeelingRecommendationActivity : AppCompatActivity() {
         }
 
         // 마이 페이지 버튼 클릭 리스너
-        imageButton_myPage.setOnClickListener {
+        imageButton_feeling_myPage.setOnClickListener {
             val intent = Intent(this, MyPageActivity::class.java)
             startActivity(intent)
+        }
+
+        imageButton_feeling_back.setOnClickListener {
+            finish()
         }
 
         } // onCreate 메소드 종료

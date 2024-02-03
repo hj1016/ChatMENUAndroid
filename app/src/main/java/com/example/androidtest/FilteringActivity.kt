@@ -1,7 +1,6 @@
 package com.example.androidtest
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -24,7 +23,6 @@ class FilteringActivity: AppCompatActivity() {
     private val buttonNames = mutableListOf<String>()
     private lateinit var buttonAdapter: ButtonAdapter
     private lateinit var dbHelper: DBHelper
-    private var user_info = "\n[사용자 정보]"
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,8 +67,6 @@ class FilteringActivity: AppCompatActivity() {
         // 액티비티가 시작될 때 DB에서 이전에 선택한 음식을 불러와서 라디오 버튼을 선택해 주는 코드
         Log.d("pass logic", "PreFood")
         val selectedFood = dbHelper.getPreFood()
-        //사용자 정보에 선호 음식 취향 추가
-        user_info+" 선호하는 음식 종류: "+selectedFood
         when (selectedFood) {
             "한식" -> radioGroupPreFood.check(R.id.button_ft_korea)
             "일식" -> radioGroupPreFood.check(R.id.button_ft_japan)
@@ -95,8 +91,6 @@ class FilteringActivity: AppCompatActivity() {
         // 액티비티가 시작될 때 DB에서 이전에 선택한 맛을 불러와서 라디오 버튼을 선택해 주는 코드
         Log.d("pass logic", "Flavour")
         val selectedFlavour = dbHelper.getFlavour()
-        //사용자 정보에 선호 맛 취향 추가
-        user_info+" 선호하는 맛: "+selectedFlavour
         when (selectedFlavour) {
             "단맛" -> radioGroupFlavour.check(R.id.button_ft_sweet)
             "매운맛" -> radioGroupFlavour.check(R.id.button_ft_spicy)
@@ -110,8 +104,6 @@ class FilteringActivity: AppCompatActivity() {
         editTextPeople.setText(getPeopleNumber.toString())
         editTextPeople.setOnClickListener {
             val peopleNumberValue = editTextPeople.text.toString().toIntOrNull() ?: 1
-            //사용자 정보에 식사 인원 추가
-            user_info+" 식사 인원: " + peopleNumberValue
 
             // 선택된 인원수 정보를 DB에 업데이트
             dbHelper.updatePeopleNum(peopleNumberValue)
@@ -134,8 +126,6 @@ class FilteringActivity: AppCompatActivity() {
         // 액티비티가 시작될 때 DB에서 이전에 선택한 다이어트 여부를 불러와서 라디오 버튼을 선택해 주는 코드
         Log.d("pass logic", "PreFood")
         val selectedDiet = dbHelper.getDiet()
-        //사용자 정보에 다이어트 정보 추가
-        user_info+" 다이어트 "+selectedDiet
         when (selectedDiet) {
             "해당" -> radioGroupDiet.check(R.id.button_ft_diet)
             "해당 없음" -> radioGroupDiet.check(R.id.button_ft_nodiet)
@@ -164,8 +154,6 @@ class FilteringActivity: AppCompatActivity() {
         // 액티비티가 시작될 때 DB에서 이전에 비건 정보를 불러와서 라디오 버튼을 선택해 주는 코드
         Log.d("pass logic", "Vegan")
         val selectedVegan = dbHelper.getVegan()
-        //사용자 정보에 비건 정보 추가
-        user_info+" 비건 정보: "+selectedVegan
         when (selectedVegan) {
             "플렉시테리언" -> radioGroupVegan.check(R.id.button_ft_flex)
             "폴로베지테리언" -> radioGroupVegan.check(R.id.button_ft_polo)
@@ -177,11 +165,6 @@ class FilteringActivity: AppCompatActivity() {
             "프루테리언" -> radioGroupVegan.check(R.id.button_ft_fru)
             "논비건" -> radioGroupVegan.check(R.id.button_ft_non)
         }
-        //사용자 정보에 알러지 정보 추가
-        user_info+" 알러지 목록: "+buttonNames.toString()
-
-        // 리스트뷰 항목 터치시 해당 항목 삭제
-        // 테스트 중
 
         // 추가 버튼 터치시 동작
         try {
@@ -200,23 +183,7 @@ class FilteringActivity: AppCompatActivity() {
 
         // 완료 버튼 클릭 시 이전(마이페이지) 화면으로
         button_ft_complete.setOnClickListener {
-            Log.d("filtering_test1",user_info)
-            // FilteringActivity에서 FeelingRecommendationActivity로 사용자 정보 전달
-            val intent1 = Intent(this@FilteringActivity, FeelingRecommendationActivity::class.java)
-            intent1.putExtra("user_info", user_info)
-
-            // FilteringActivity에서 IngredientRecommendationActivity로 사용자 정보 전달
-            val intent2 = Intent(this@FilteringActivity, IngredientRecommendationActivity::class.java)
-            intent2.putExtra("user_info", user_info)
-
-            // FilteringActivity에서 TimeRecommendationActivity로 사용자 정보 전달
-            val intent3 = Intent(this@FilteringActivity, TimeRecommendationActivity::class.java)
-            intent3.putExtra("user_info", user_info)
-
-            // FilteringActivity에서 WeatherRecommendationActivity로 사용자 정보 전달
-            val intent4 = Intent(this@FilteringActivity, WeatherRecommendationActivity::class.java)
-            intent4.putExtra("user_info", user_info)
-
+            // 여기에 userInfo 관리할 필요 없음
             finish()
         }
 

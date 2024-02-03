@@ -179,7 +179,6 @@ class DBHelper(
         return result
     }
 
-
     // 선호하는 음식 업데이트
     fun updatePreFood(selectedFood: String): Int {
         val userID = getUserID()
@@ -206,7 +205,7 @@ class DBHelper(
             }
         }
         Log.d("result", result ?: "Empty Result")
-        return result ?: ""
+        return result ?: "없음"
     }
 
 
@@ -236,7 +235,7 @@ class DBHelper(
             }
         }
         Log.d("result", result ?: "Empty Result")
-        return result ?: ""
+        return result ?: "없음"
     }
 
 
@@ -312,7 +311,7 @@ class DBHelper(
             }
         }
         Log.d("result", result ?: "Empty Result")
-        return result ?: ""
+        return result ?: "해당 없아"
     }
 
 
@@ -343,7 +342,7 @@ class DBHelper(
             }
         }
         Log.d("result", result ?: "Empty Result")
-        return result ?: ""
+        return result ?: "논비건"
     }
 
 }

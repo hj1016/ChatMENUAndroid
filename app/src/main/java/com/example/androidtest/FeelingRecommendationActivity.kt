@@ -74,7 +74,9 @@ class FeelingRecommendationActivity : AppCompatActivity() {
             finish()
         }
 
-        } // onCreate 메소드 종료
+    } // onCreate 메소드 종료
+
+
         fun onButtonClick(view: View) {
         // 클릭한 버튼의 이름 추출
             when (view.id) {
